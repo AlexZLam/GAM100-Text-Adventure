@@ -1,2 +1,3 @@
 C:\Users\sporg\Downloads\TextAdventureVisualStudio\Debug\GAM100Project.exe
 C:\Users\diana.everman\Documents\TextAdventureVisualStudio-1 (2)\TextAdventureVisualStudio\Debug\GAM100Project.exe
+C:\Users\diana.everman\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
