@@ -116,6 +116,87 @@ Room* Room2_Build()
 	return room;
 }
 
+Room* Room3_Build()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 3.  There is skeleton in the corner of the room. He looks very tired. He also has a small bag that has fallen into his rib cage. There is do to the north right next to the sleepy skeleton.\n");
+	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	Room_AddRoomExit(room, "north", 4);
+	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
+	Room_AddRoomExitShortcut(room, "n", 4);
+	Room_AddRoomExit(room, "west", 2);
+	Room_AddRoomExitShortcut(room, "w", 2);
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make gold piece and notebook
+	/* return the new room */
+	return room;
+}
+
+Room* Room4_Build()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him. There is also a magic orb sitting on the counter with a sign that says \"foR moNees\". There is a strange door with a key hole to the east.\n");
+	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	Room_AddRoomExit(room, "east", 6);
+	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
+	Room_AddRoomExitShortcut(room, "e", 6);
+	Room_AddRoomExit(room, "south", 3);
+	Room_AddRoomExitShortcut(room, "s", 3);
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make orb and key
+	/* return the new room */
+	return room;
+}
+
+Room* Room5_Build()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 5. There is portal on the far wall barely bigger than your arm. The room is filled with a blue-purple glow that is eminating from the portal.\n");
+	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	Room_AddRoomExit(room, "north", 2);
+	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
+	Room_AddRoomExitShortcut(room, "n", 2);
+
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make portal
+	/* return the new room */
+	return room;
+}
+
+Room* Room6_Build()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 6. There is a pedestal with an egg shaped rock sitting on it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
+	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	Room_AddRoomExit(room, "north", 2);
+	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
+	Room_AddRoomExitShortcut(room, "n", 2);
+
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make portal
+	/* return the new room */
+	return room;
+}
+
+
+
+
 
 /* TODO ADVANCED: Build room 3 */
 /* TODO ADVANCED: Build room 4 */
@@ -141,6 +222,8 @@ WorldData* CreateInitialWorldData()
 	/* TODO REQUIRED: add rooms 1 and 2 to the world data */
 	WorldData_SetRoom(worldData, 1, Room1_Build());
 	WorldData_SetRoom(worldData, 2, Room2_Build());
+	WorldData_SetRoom(worldData, 3, Room3_Build());
+	WorldData_SetRoom(worldData, 4, Room4_Build());
 	/* TODO ADVANCED: add additional advanced rooms */
 
 	/* return the new object */
