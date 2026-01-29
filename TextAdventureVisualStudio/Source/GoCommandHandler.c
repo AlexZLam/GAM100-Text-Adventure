@@ -53,6 +53,25 @@ void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worl
 		return;
 	}
 
+	//unlockable exits will display flavortext if no correct item 
+	if (gameState->currentRoomIndex == 2)
+	{
+		if (nextRoomIndex == 3 && ItemList_FindItem(gameState->inventory, "egg") == NULL)
+		{
+			printf("You need ");
+			return;
+		}
+		else if (nextRoomIndex == 5)
+		{
+
+			return;
+		}
+	}
+	else if (gameState->currentRoomIndex == 4 && nextRoomIndex == 6)
+	{
+		return;
+	}
+
 	/* update the game state to move to the new room */
 	gameState->currentRoomIndex = nextRoomIndex;
 
