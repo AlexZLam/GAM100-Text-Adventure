@@ -16,6 +16,10 @@ the user from one room to another using defined exits.
 #include "WorldData.h" /* WorldData_GetRoom */
 #include "Room.h" /* Room_GetNextRoomIndex, Room_Print, INVALID_DIRECTION_ID */
 
+#include "ExitDoorFunctions.h" /* ExitDoor_Build */
+#include "WorldData.h" /* WorldData_GetRoom */
+#include "ItemList.h" /* ItemList_FindItem */
+
 
 /* Handles the "go" command, which moves the user to another room */
 void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worldData)
@@ -31,6 +35,15 @@ void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worl
 
 	/* get the current room, based on the user state */
 	currentRoom = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
+
+	//resolve any changes triggered by the exit
+	if (gameState->currentRoomIndex == 0 && nextRoomIndex == 2)
+	{
+		if (command->noun == "east" || command->noun == "e" || command->noun == "crack")
+		{
+			Room_AddRoomExit(WorldData_GetRoom(worldData, 0), "west", 1);
+		}
+	}
 
 	/* get the next room index, based on the noun used with "go" */
 	if (Room_GetNextRoomIndex(currentRoom, command->noun, &nextRoomIndex) == false)
