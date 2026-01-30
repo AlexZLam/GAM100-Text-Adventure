@@ -184,9 +184,9 @@ Room* Room6_Build()
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
 	room = Room_Create("This is room 6. There is a pedestal with an egg shaped rock sitting on it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
-	Room_AddRoomExit(room, "north", 2);
+	Room_AddRoomExit(room, "west", 4);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
-	Room_AddRoomExitShortcut(room, "n", 2);
+	Room_AddRoomExitShortcut(room, "w", 4);
 
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
 	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make portal
@@ -224,6 +224,8 @@ WorldData* CreateInitialWorldData()
 	WorldData_SetRoom(worldData, 2, Room2_Build());
 	WorldData_SetRoom(worldData, 3, Room3_Build());
 	WorldData_SetRoom(worldData, 4, Room4_Build());
+	WorldData_SetRoom(worldData, 5, Room4_Build());
+	WorldData_SetRoom(worldData, 6, Room4_Build());
 	/* TODO ADVANCED: add additional advanced rooms */
 
 	/* return the new object */
