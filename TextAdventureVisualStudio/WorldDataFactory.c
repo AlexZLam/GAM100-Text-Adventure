@@ -17,6 +17,7 @@ This could be used to create default states as well as loaded state.
 #include "ItemList.h" /* ItemList_Add */
 #include "BrickFunctions.h" /* Brick_Build */
 #include "GoldPieceFunctions.h" /* GoldPiece_Build */
+#include "NotebookFunctions.h" 
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
 
 
@@ -104,11 +105,14 @@ Room* Room2_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n");
+	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through. There is also a small door to the south in the shape of a circle and a door with an egg carved into it to the east\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
-	Room_AddRoomExit(room, "east", 0);
+	Room_AddRoomExit(room, "east", 3);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
-	Room_AddRoomExitShortcut(room, "e", 0);
+	Room_AddRoomExitShortcut(room, "e", 3);
+	Room_AddRoomExit(room, "south", 5);
+	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
+	Room_AddRoomExitShortcut(room, "s", 5);
 	Room_AddRoomExitShortcut(room, "crack", 0);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
 	ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build());
@@ -131,7 +135,8 @@ Room* Room3_Build()
 	Room_AddRoomExit(room, "west", 2);
 	Room_AddRoomExitShortcut(room, "w", 2);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make gold piece and notebook
+	ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build());
+	ItemList_AddItem(Room_GetItemList(room), Notebook_Build());
 	/* return the new room */
 	return room;
 }
@@ -143,7 +148,7 @@ Room* Room4_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him. There is also a magic orb sitting on the counter with a sign that says \"foR moNees\". There is a strange door with a key hole to the east.\n");
+	room = Room_Create("This is room 4. There is short wizard standing on an apple crate looking over the table of his pop up shop. There is a small key in the pocket of the cloak and a magic orb sitting on the counter. There is a strange door with a key hole to the east.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "east", 6);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
@@ -184,9 +189,9 @@ Room* Room6_Build()
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
 	room = Room_Create("This is room 6. There is a pedestal with an egg shaped rock sitting on it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
-	Room_AddRoomExit(room, "north", 2);
+	Room_AddRoomExit(room, "west", 4);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
-	Room_AddRoomExitShortcut(room, "n", 2);
+	Room_AddRoomExitShortcut(room, "w", 4);
 
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
 	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make portal
@@ -212,7 +217,7 @@ WorldData* CreateInitialWorldData()
 
 	/* TODO REQUIRED: update room count to match the number of rooms you have created and added to the world
 	   if this number doesn't match then your game will either crash or you will end up stuck in a broken room with no exits */
-	int roomCount = 3;
+	int roomCount = 7;
 
 	/* create the new WorldData object with 3 rooms */
 	worldData = WorldData_Create("Welcome to my GAM100 Game!\n\n", roomCount);
@@ -224,6 +229,8 @@ WorldData* CreateInitialWorldData()
 	WorldData_SetRoom(worldData, 2, Room2_Build());
 	WorldData_SetRoom(worldData, 3, Room3_Build());
 	WorldData_SetRoom(worldData, 4, Room4_Build());
+	WorldData_SetRoom(worldData, 5, Room5_Build());
+	WorldData_SetRoom(worldData, 6, Room6_Build());
 	/* TODO ADVANCED: add additional advanced rooms */
 
 	/* return the new object */
