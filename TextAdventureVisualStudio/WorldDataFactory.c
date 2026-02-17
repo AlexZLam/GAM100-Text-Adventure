@@ -20,6 +20,8 @@ This could be used to create default states as well as loaded state.
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
 
 
+#include "NotebookFunctions.h" /* Notebook_Build */
+
 
 /******************************************************************************
 	Build room TEMPLATE

@@ -15,39 +15,41 @@ the user from one room to another using defined exits.
 #include "GameState.h" /* struct GameState */
 #include "WorldData.h" /* WorldData_GetRoom */
 #include "Room.h" /* Room_GetNextRoomIndex, Room_Print, INVALID_DIRECTION_ID */
-#include "ItemList.h" /* ItemList_FindItem */
+#include "ItemList.h" /* ItemList_ContainsItem */
 
 
 /* Handles the "go" command, which moves the user to another room */
-void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worldData)
+void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worldData)
 {
 	Room* currentRoom; /* the room we are currently in */
 	int nextRoomIndex; /* the index of hte next room */
 
 
 	/* safety check on the parameters */
-	if ((command == NULL) || (command->noun == NULL) || (gameState == NULL) || (worldData == NULL)) 
+	if ((command == NULL) || (command->noun == NULL) || (gameState == NULL) || (worldData == NULL))
 	{
 		return; /* take no action if the parameters are invalid */
 	}
 
 	//built-in shortcuts for cardinal directions
-	if (command->noun == "n")
+	
+	if (strcmp(command->noun,"n"))
 	{
-		strcpy(command->noun, "north");
+		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "north");
 	}
-	else if (command->noun == "s")
+	else if (strcmp(command->noun, "s"))
 	{
-		strcpy(command->noun, "south");
+		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "south");
 	}
-	else if (command->noun == "e")
+	else if (strcmp(command->noun,  "e"))
 	{
-		strcpy(command->noun, "east");
+		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "east");
 	}
-	else if (command->noun == "w")
+	else if (strcmp(command->noun, "w"))
 	{
-		strcpy(command->noun, "west");
+		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "west");
 	}
+	
 
 	/* get the current room, based on the user state */
 	currentRoom = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
@@ -63,7 +65,7 @@ void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worl
 	//don't let player go through certain exits if they don't have the right item
 	if (gameState->currentRoomIndex == 2 && nextRoomIndex == 3)
 	{
-		if (ItemList_FindItem(gameState->currentRoomIndex, "egg") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "egg") == NULL)
 		{
 			printf("The egg-shaped door does not budge.\n");
 			return;
@@ -71,7 +73,7 @@ void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worl
 	}
 	else if (gameState->currentRoomIndex == 2 && nextRoomIndex == 5)
 	{
-		if (ItemList_FindItem(gameState->currentRoomIndex, "orb") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "orb") == NULL)
 		{
 			printf("The door has a magical aura to it. It does not budge.\n");
 			return;
@@ -79,7 +81,7 @@ void HandleGoCommand(CommandData *command, GameState *gameState, WorldData *worl
 	}
 	else if (gameState->currentRoomIndex == 4 && nextRoomIndex == 6)
 	{
-		if (ItemList_FindItem(gameState->currentRoomIndex, "key") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "key") == NULL)
 		{
 			printf("The door has a keyhole. It does not budge.\n");
 			return;
