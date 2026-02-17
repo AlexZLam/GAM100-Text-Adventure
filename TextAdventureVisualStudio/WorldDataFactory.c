@@ -147,7 +147,7 @@ Room* Room4_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him. There is also a magic orb sitting on the counter with a sign that says \"foR moNees\". There is a strange door with a key hole to the east.\n");
+	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "east", 6);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
