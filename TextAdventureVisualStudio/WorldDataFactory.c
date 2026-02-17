@@ -104,12 +104,14 @@ Room* Room2_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n");
+	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through. There is also a strange circular door to the south.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
-	Room_AddRoomExit(room, "east", 0);
+	Room_AddRoomExit(room, "east", 3);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
-	Room_AddRoomExitShortcut(room, "e", 0);
+	Room_AddRoomExitShortcut(room, "e", 3);
 	Room_AddRoomExitShortcut(room, "crack", 0);
+	Room_AddRoomExit(room, "south", 5);
+	Room_AddRoomExitShortcut(room, "s", 5);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
 	ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build());
 	/* return the new room */
@@ -131,7 +133,7 @@ Room* Room3_Build()
 	Room_AddRoomExit(room, "west", 2);
 	Room_AddRoomExitShortcut(room, "w", 2);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make gold piece and notebook
+	ItemList_AddItem(Room_GetItemList(room), Notebook_Build());
 	/* return the new room */
 	return room;
 }
@@ -224,8 +226,8 @@ WorldData* CreateInitialWorldData()
 	WorldData_SetRoom(worldData, 2, Room2_Build());
 	WorldData_SetRoom(worldData, 3, Room3_Build());
 	WorldData_SetRoom(worldData, 4, Room4_Build());
-	WorldData_SetRoom(worldData, 5, Room4_Build());
-	WorldData_SetRoom(worldData, 6, Room4_Build());
+	WorldData_SetRoom(worldData, 5, Room5_Build());
+	WorldData_SetRoom(worldData, 6, Room6_Build());
 	/* TODO ADVANCED: add additional advanced rooms */
 
 	/* return the new object */

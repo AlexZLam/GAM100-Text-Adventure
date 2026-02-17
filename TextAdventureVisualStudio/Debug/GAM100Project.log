@@ -1,2 +1,16 @@
-﻿  WorldDataFactory.c
-  GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
+﻿  GoCommandHandler.c
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(35,26): error C2220: the following warning is treated as an error
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(35,26): warning C4130: '==': logical operation on address of string constant
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(39,31): warning C4130: '==': logical operation on address of string constant
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(43,31): warning C4130: '==': logical operation on address of string constant
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(47,31): warning C4130: '==': logical operation on address of string constant
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(66,52): warning C4047: 'function': 'ItemList *' differs in levels of indirection from 'int'
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(66,34): warning C4024: 'ItemList_FindItem': different types for formal and actual parameter 1
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(74,52): warning C4047: 'function': 'ItemList *' differs in levels of indirection from 'int'
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(74,34): warning C4024: 'ItemList_FindItem': different types for formal and actual parameter 1
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(82,52): warning C4047: 'function': 'ItemList *' differs in levels of indirection from 'int'
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(82,34): warning C4024: 'ItemList_FindItem': different types for formal and actual parameter 1
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(37,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(41,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(45,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\GoCommandHandler.c(49,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
