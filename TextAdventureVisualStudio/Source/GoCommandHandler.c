@@ -33,19 +33,19 @@ void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worl
 
 	//built-in shortcuts for cardinal directions
 	
-	if (strcmp(command->noun,"n"))
+	if (strcmp(command->noun,"n") == 0)
 	{
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "north");
 	}
-	else if (strcmp(command->noun, "s"))
+	else if (strcmp(command->noun, "s") == 0)
 	{
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "south");
 	}
-	else if (strcmp(command->noun,  "e"))
+	else if (strcmp(command->noun,  "e") == 0)
 	{
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "east");
 	}
-	else if (strcmp(command->noun, "w"))
+	else if (strcmp(command->noun, "w") == 0)
 	{
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "west");
 	}
