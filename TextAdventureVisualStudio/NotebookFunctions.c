@@ -4,6 +4,9 @@
 #include "GameFlags.h"
 #include "Item.h"
 #include "Room.h"
+#include "WorldData.h" /* WorldData_GetRoom */
+#include "ItemList.h" /* ItemList_FindItem, ItemList_Remove, ItemList_Add */
+#include "GoldPieceFunctions.h" /* Egg_Build */
 
 typedef struct WorldData WorldData;
 
@@ -33,6 +36,18 @@ void Notebook_Take(CommandContext context, GameState* gameState, WorldData* worl
 
 void Notebook_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 {
+	Room* room; /* The current room */
+	ItemList** roomItemsPtr; /* The list of items in the current room */
+
+	room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
+
+	/* get the list of items in the current room */
+	roomItemsPtr = Room_GetItemList(room);
+	if (roomItemsPtr == NULL)
+	{
+		return; /* take no action, as something is wrong - we should always have an item list */
+	}
+
 	if ((gameState == NULL) || (worldData == NULL))
 	{
 		return; /* take no action if the parameters are invalid */
@@ -45,6 +60,8 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 		printf("You must have the notebook before you can use it.\n");
 		return;
 	}
+	*roomItemsPtr = ItemList_Add(*roomItemsPtr, GoldPiece_Build());
+	Room_SetDescription(room, "This is room 3.  There is a coin on the floor.\n");
 	printf("This a notebook from the skeleton. dont touch it\n");
 }
 
