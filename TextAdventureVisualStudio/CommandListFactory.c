@@ -50,6 +50,9 @@ CommandList* CreateCommandList()
 	CommandList_Add(cmdListPtr, "take", HandleTakeCommand, true);
 	CommandList_Add(cmdListPtr, "t", HandleTakeCommand, false);
 
+	//new command: talk
+	CommandList_Add(cmdListPtr, "talk", HandleTalkCommand, true);
+
 	/* TODO REQUIRED: create the "use" command
 	TODO BASIC: add a short alias "u" */
 	CommandList_Add(cmdListPtr, "use", HandleUseCommand, true);
