@@ -16,7 +16,7 @@ an item from the current room and adds it to the user's inventory.
 #include "WorldData.h" /* WorldData_GetRoom */
 #include "Room.h" /* Room_GetItemList */
 #include "ItemList.h" /* ItemList_FindItem, ItemList_Add, ItemList_Remove */
-#include "Item.h" /* Item_IsCarryable, ItemFunc, Item_GetTakeFunc */
+#include "Item.h" /* Item_IsCarryable, ItemFunc, Item_GetTalkFunc */
 
 
 /* Handles the "take" command, which removes an item from the current room and adds it to the user's inventory */
@@ -25,7 +25,7 @@ void HandleTalkCommand(CommandData* command, GameState* gameState, WorldData* wo
 	Item* takenItem; /* the item removed from the room and added to the user's inventory */
 	Room* room; /* the current room */
 	ItemList** roomItemPtr; /* the list of items in the current room */
-	ItemFunc takeFunc; /* The function to be called for the given item when it is taken */
+	ItemFunc talkFunc; /* The function to be called for the given item when it is taken */
 
 	/* safety check on the parameters */
 	if ((command == NULL) || (command->noun == NULL) || (gameState == NULL) || (worldData == NULL))
@@ -52,28 +52,14 @@ void HandleTalkCommand(CommandData* command, GameState* gameState, WorldData* wo
 		return;
 	}
 
-	/* check if the item is carryable */
-	if (Item_IsCarryable(takenItem) == false)
-	{
-		/* the item is not carryable - inform the user of the problem and take no action */
-		printf("You cannot take the %s.\n", command->noun);
-		return;
-	}
-
-	/* remove the item from the room */
-	*roomItemPtr = ItemList_Remove(*roomItemPtr, takenItem);
-
-	/* add the item to the user's inventory */
-	gameState->inventory = ItemList_Add(gameState->inventory, takenItem);
-
 	/* inform the user of the successful action */
-	printf("You have picked up the %s.\n", command->noun);
+	printf("You go to talk to the %s.\n", command->noun);
 
 	/* get the "take" function for this item, if any (it is optional) */
-	takeFunc = Item_GetTakeFunc(takenItem);
-	if (takeFunc != NULL)
+	talkFunc = Item_GetTalkFunc(takenItem);
+	if (talkFunc != NULL)
 	{
 		/* call the take function with the Room context, since that's where the item was */
-		takeFunc(CommandContext_Item_Room, gameState, worldData);
+		talkFunc(CommandContext_Item_Room, gameState, worldData);
 	}
 }

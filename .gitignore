@@ -367,3 +367,8 @@ FodyWeavers.xsd
 TextAdventureVisualStudio/.vs/GAM100Project/v17/Browse.VC.db
 TextAdventureVisualStudio/.vs/GAM100Project/v17/Browse.VC.db
 *.db
+*.obj
+*.db
+TextAdventureVisualStudio/Debug/GAM100Project.exe
+TextAdventureVisualStudio/Debug/GAM100Project.tlog/CL.read.1.tlog
+*.tlog
