@@ -60,9 +60,11 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 		printf("You must have the notebook before you can use it.\n");
 		return;
 	}
+
+	Room_SetDescription(room, "This is room 3. There is a coin on the floor.\n");
+
 	*roomItemsPtr = ItemList_Add(*roomItemsPtr, GoldPiece_Build());
-	Room_SetDescription(room, "This is room 3.  There is a coin on the floor.\n");
-	printf("This a notebook from the skeleton. dont touch it\n");
+	printf("You see soemthing shiny fall out of the book");
 }
 
 Item* Notebook_Build()

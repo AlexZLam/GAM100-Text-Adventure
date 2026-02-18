@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include "MerchantFunctions.h"
+#include "ItemList.h"   
 #include "GameState.h"
 #include "GameFlags.h"
 #include "Item.h"
 #include "Room.h"
+#include "WorldData.h"
 
-typedef struct WorldData WorldData;
+
+
 
 
 void Merchant_Use(CommandContext context, GameState* gameState, WorldData* worldData)
@@ -30,8 +33,33 @@ void Merchant_Use(CommandContext context, GameState* gameState, WorldData* world
     }
     else if (ans == 2)
     {
-        printf("Pay 3 coins");
+        int goldCnt = 0;
+        struct ItemList* current = gameState->inventory;  /* start at the head */
+
+        while (current != NULL)
+        {
+            const char* name = Item_GetName(current->item);
+
+            if (name != NULL && strcmp(name, "gold piece") == 0)
+            {
+                goldCnt++;
+            }
+
+            current = current->next;
+        }
+
+        if (goldCnt >= 3)
+        {
+            printf("You pay 3 coins and receive the orb.\n");
+        }
+        else
+        {
+            printf("You don't have enough gold.\n");
+        }
     }
+
+
+
 
     printf("\n");
 }

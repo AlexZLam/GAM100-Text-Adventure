@@ -1,2 +1,35 @@
-﻿  NotebookFunctions.c
-  GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
+﻿  CommandListFactory.c
+  main.c
+  MerchantFunctions.c
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(41,45): error C2037: left of 'item' specifies undefined struct/union 'ItemList'
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(41,32): error C2198: 'Item_GetName': too few arguments for call
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(48,23): error C2037: left of 'next' specifies undefined struct/union 'ItemList'
+  NotebookFunctions.c
+  BrickFunctions.c
+  CommandHandler.c
+  CommandList.c
+  DropCommandHandler.c
+  EggFunctions.c
+  ExitDoorFunctions.c
+  GameFlags.c
+  GameState.c
+  GameStateFactory.c
+  GoCommandHandler.c
+  GoldPieceFunctions.c
+  HelpCommandHandler.c
+  InputProvider.c
+  InventoryCommandHandler.c
+  Item.c
+  ItemList.c
+  Generating Code...
+  Compiling...
+  LookCommandHandler.c
+  QuitCommandHandler.c
+  Room.c
+  RoomExit.c
+  stdafx.c
+  TakeCommandHandler.c
+  UseCommandHandler.c
+  WorldData.c
+  WorldDataFactory.c
+  Generating Code...
