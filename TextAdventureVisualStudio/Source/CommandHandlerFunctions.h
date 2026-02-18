@@ -37,6 +37,9 @@ void HandleLookCommand(CommandData* command, GameState *gameState, WorldData *wo
 /* Handles the "take" command, which removes an item from the current room and adds it to the user's inventory */
 void HandleTakeCommand(CommandData* command, GameState *gameState, WorldData *worldData);
 
+/* Handles the "talk" command, which starts a conversation with an npc */
+void HandleTalkCommand(CommandData* command, GameState* gameState, WorldData* worldData);
+
 /* Handles the "use" command, which calls an item-specific function on a given item */
 void HandleUseCommand(CommandData* command, GameState *gameState, WorldData *worldData);
 
