@@ -28,10 +28,45 @@ typedef struct Item
 	ItemFunc useFunc;	/* a function called when the user uses this item, if any */
 	ItemFunc takeFunc;	/* a function called when the user takes this item, if any */
 	ItemFunc dropFunc;	/* a function called when the user uses this item, if any */
+	ItemFunc talkFunc;	/* a function called when the user talks to this item, if any */
 } Item;
 
+/* NEW Create a new Item object with the provided data */
+Item* Item_Create_NPC(const char* name, const char* description, bool isCarryable, ItemFunc useFunc, ItemFunc takeFunc, ItemFunc dropFunc, ItemFunc talkFunc)
+{
+	Item* item; /* the new item to be returned */
 
-/* Create a new Item object with the provided data */
+	/* safety check on required parameters */
+	if (name == NULL)
+	{
+		return NULL; /* do not create a new object if the parameters are invalid*/
+	}
+
+	/* allocate the memory for a new object */
+	item = (Item*)malloc(sizeof(Item));
+	if (item == NULL)
+	{
+		return NULL; /* malloc can fail! */
+	}
+
+	/* copy the data from the parameters into the new object */
+	strcpy_s(item->name, MAX_ITEM_NAME_LENGTH, name);
+	if (description != NULL)
+	{
+		strcpy_s(item->description, MAX_ITEM_DESCRIPTION_LENGTH, description);
+	}
+	item->isCarryable = isCarryable;
+	item->useFunc = useFunc;
+	item->takeFunc = takeFunc;
+	item->dropFunc = dropFunc;
+	item->talkFunc = talkFunc;
+
+	/* return the new object */
+	return item;
+}
+
+
+/* OLD Create a new Item object with the provided data */
 Item* Item_Create(const char* name, const char* description, bool isCarryable, ItemFunc useFunc, ItemFunc takeFunc, ItemFunc dropFunc)
 {
 	Item *item; /* the new item to be returned */
@@ -59,6 +94,7 @@ Item* Item_Create(const char* name, const char* description, bool isCarryable, I
 	item->useFunc = useFunc;
 	item->takeFunc = takeFunc;
 	item->dropFunc = dropFunc;
+	item->talkFunc = NULL;
 
 	/* return the new object */
 	return item;
@@ -119,6 +155,13 @@ ItemFunc Item_GetTakeFunc(Item* item)
 {
 	/* return the data if the parameter is not NULL, otherwise return NULL */
 	return (item != NULL) ? item->takeFunc : NULL;
+}
+
+/* Retrieve the "talk" function for this item, if any */
+ItemFunc Item_GetTalkFunc(Item* item)
+{
+	/* return the data if the parameter is not NULL, otherwise return NULL */
+	return (item != NULL) ? item->talkFunc : NULL;
 }
 
 
