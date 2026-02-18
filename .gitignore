@@ -366,3 +366,4 @@ MigrationBackup/
 FodyWeavers.xsd
 TextAdventureVisualStudio/.vs/GAM100Project/v17/Browse.VC.db
 TextAdventureVisualStudio/.vs/GAM100Project/v17/Browse.VC.db
+*.db
