@@ -127,7 +127,7 @@ Room* Room3_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 3.  There is skeleton in the corner of the room. He looks very tired. He also has a small bag that has fallen into his rib cage. There is do to the north right next to the sleepy skeleton.\n");
+	room = Room_Create("This is room 3.  There is skeleton in the corner of the room. He looks very tired. He also has a o to the north right next to the sleepy skeleton.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "north", 4);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
@@ -216,9 +216,7 @@ WorldData* CreateInitialWorldData()
 
 	/* TODO REQUIRED: update room count to match the number of rooms you have created and added to the world
 	   if this number doesn't match then your game will either crash or you will end up stuck in a broken room with no exits */
-	int roomCount = 3;
-
-	/* create the new WorldData object with 3 rooms */
+	int roomCount = 6;/* create the new WorldData object with 3 rooms */
 	worldData = WorldData_Create("Welcome to my GAM100 Game!\n\n", roomCount);
 
 	/* build each room and assign them to the world data */
