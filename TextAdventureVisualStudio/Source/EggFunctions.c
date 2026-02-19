@@ -64,5 +64,5 @@ void Egg_Drop(CommandContext context, GameState* gameState, WorldData* worldData
 Item* Egg_Build()
 {
 	/* Create a "egg" item, using the functions defined in this file */
-	return Item_Create("egg", "The fragile egg is beautiful iridescent green, and it is obviously very valuable.\n", true, NULL, Egg_Take, Egg_Drop);
+	return Item_Create("egg", "The fragile egg is beautiful iridescent green, and it is obviously very valuable. Its large, but lighter than it looks.\n", true, NULL, Egg_Take, Egg_Drop);
 }

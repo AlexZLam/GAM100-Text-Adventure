@@ -54,53 +54,64 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 	}
 
 	/* check if we're in the right room to use the item */
-	if (gameState->currentRoomIndex != 0)
+	if (gameState->currentRoomIndex != 0 && gameState->currentRoomIndex != 6)
 	{
 		/* we are not in the right room - inform the user of the problem and take no action */
 		printf("You cannot use the brick here.\n");
 		return;
 	}
-
-	/* check if the cage has already been broken and scored */
-	if (GameFlags_IsInList(gameState->gameFlags, "cageBrokenScored"))
+	if (gameState->currentRoomIndex == 0)
 	{
-		/* the player already used the brick - inform the user of the problem and take no action */
-		printf("You already used the brick here.\n");
+		/* check if the cage has already been broken and scored */
+		if (GameFlags_IsInList(gameState->gameFlags, "cageBrokenScored"))
+		{
+			/* the player already used the brick - inform the user of the problem and take no action */
+			printf("You already used the brick here.\n");
+			return;
+		}
+		else
+		{
+			/* get the current room */
+			room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
+
+			/* get the list of items in the current room */
+			roomItemsPtr = Room_GetItemList(room);
+			if (roomItemsPtr == NULL)
+			{
+				return; /* take no action, as something is wrong - we should always have an item list */
+			}
+
+			/* Find the brick in the player's inventory - it should be there, since we are in the Inventory context */
+			brick = ItemList_FindItem(gameState->inventory, "brick");
+
+			/* Remove the brick from the user's inventory - they won't need it again */
+			//NO THEY WILL NEED IT
+			//gameState->inventory = ItemList_Remove(gameState->inventory, brick);
+
+			/* Tell the user what they did */
+			//OLD printf("You smash the cage open with the brick, and the brick crumbles.  You can now reach the small egg inside.\n");
+			printf("You smash the cage open with the brick.  You can now reach the small egg inside.\n");
+
+			/* Add to the player's score */
+			GameState_ChangeScore(gameState, 10);
+
+			/* Update the room description to reflect the change in the room */
+			Room_SetDescription(room, "This is room 0.  You are in a display room.  There is a broken cage here.\n");
+
+			/* Add an egg to the current room, since the cage has been bashed open */
+			*roomItemsPtr = ItemList_Add(*roomItemsPtr, Egg_Build());
+
+			/* the gold piece has not been scored, so mark the flag */
+			gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "cageBrokenScored");
+		}
+	}
+	else if (gameState->currentRoomIndex == 6)
+	{
+		//indiana jones
+
 		return;
 	}
-	else
-	{
-		/* get the current room */
-		room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
-
-		/* get the list of items in the current room */
-		roomItemsPtr = Room_GetItemList(room);
-		if (roomItemsPtr == NULL)
-		{
-			return; /* take no action, as something is wrong - we should always have an item list */
-		}
-
-		/* Find the brick in the player's inventory - it should be there, since we are in the Inventory context */
-		brick = ItemList_FindItem(gameState->inventory, "brick");
-
-		/* Remove the brick from the user's inventory - they won't need it again */
-		gameState->inventory = ItemList_Remove(gameState->inventory, brick);
-
-		/* Tell the user what they did */
-		printf("You smash the cage open with the brick, and the brick crumbles.  You can now reach the small egg inside.\n");
-
-		/* Add to the player's score */
-		GameState_ChangeScore(gameState, 10);
-
-		/* Update the room description to reflect the change in the room */
-		Room_SetDescription(room, "This is room 0.  You are in a display room.  There is a broken cage here.\n");
-
-		/* Add an egg to the current room, since the cage has been bashed open */
-		*roomItemsPtr = ItemList_Add(*roomItemsPtr, Egg_Build());
-
-		/* the gold piece has not been scored, so mark the flag */
-		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "cageBrokenScored");
-	}
+	
 }
 
 
@@ -108,5 +119,6 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 Item* Brick_Build()
 {
 	/* Create a "brick" item, using the functions defined in this file */
-	return Item_Create("brick", "A small red brick of indeterminate origin", true, Brick_Use, Brick_Take, NULL);
+	//OLD: A small red brick of indeterminate origin
+	return Item_Create("brick", "A small red brick of indeterminate origin. It feels heavy and sturdy.", true, Brick_Use, Brick_Take, NULL);
 }
