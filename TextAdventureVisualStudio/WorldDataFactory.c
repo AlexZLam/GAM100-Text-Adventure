@@ -18,6 +18,7 @@ This could be used to create default states as well as loaded state.
 #include "BrickFunctions.h" /* Brick_Build */
 #include "GoldPieceFunctions.h" /* GoldPiece_Build */
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
+#include "MerchantFunctions.h"
 
 
 #include "NotebookFunctions.h" /* Notebook_Build */
@@ -155,7 +156,7 @@ Room* Room4_Build()
 	Room_AddRoomExit(room, "south", 3);
 	Room_AddRoomExitShortcut(room, "s", 3);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make orb and key
+	ItemList_AddItem(Room_GetItemList(room), Merchant_Build();
 	/* return the new room */
 	return room;
 }

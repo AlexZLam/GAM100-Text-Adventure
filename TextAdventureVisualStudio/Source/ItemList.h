@@ -15,8 +15,11 @@ typedef struct Item Item;
 
 
 /* Forward declaration for the ItemList type */
-typedef struct ItemList ItemList;
-
+typedef struct ItemList
+{
+	Item* item; /* The item referred to by this linked-list node */
+	ItemList* next; /* The next node in the list */
+} ItemList;
 
 /* Adds an item to a given list, which might be NULL (an empty list).  Returns the new head of the list */
 ItemList* ItemList_Add(ItemList* itemList, Item* item);
