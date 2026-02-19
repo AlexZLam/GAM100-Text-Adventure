@@ -1,5 +1,4 @@
 ﻿  CommandListFactory.c
-  main.c
   MerchantFunctions.c
 C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(41,45): error C2037: left of 'item' specifies undefined struct/union 'ItemList'
 C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(41,32): error C2198: 'Item_GetName': too few arguments for call
@@ -21,15 +20,15 @@ C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisua
   InventoryCommandHandler.c
   Item.c
   ItemList.c
+  LookCommandHandler.c
   Generating Code...
   Compiling...
-  LookCommandHandler.c
   QuitCommandHandler.c
   Room.c
   RoomExit.c
-  stdafx.c
   TakeCommandHandler.c
   UseCommandHandler.c
   WorldData.c
+  TalkCommandHandler.c
   WorldDataFactory.c
   Generating Code...
