@@ -58,29 +58,10 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 	}
 }
 
-/* Helper: The action performed when the gold piece is dropped. */
-void GoldPiece_Drop(CommandContext context, GameState* gameState, WorldData* worldData)
-{
-	//cannot be dropped bc will be rescored if picked back up
-
-	/* avoid W4 warnings on unused parameters - this function conforms to a function typedef */
-	UNREFERENCED_PARAMETER(context);
-	UNREFERENCED_PARAMETER(worldData);
-
-	/* safety check on the parameters */
-	if (gameState == NULL)
-	{
-		return; /* take no action if the parameters are invalid */
-	}
-
-	printf("The gold piece is too valuable - why would you want to drop it?\n");
-	
-}
-
 
 /* Build a "gold piece" object */
 Item* GoldPiece_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create("gold piece", "A small piece of gold. Its got a nice weight in your palm - not too heavy, not too light.\n", true, NULL, GoldPiece_Take, GoldPiece_Drop);
+	return Item_Create("gold piece", "A small piece of gold. Its got a nice weight in your palm - not too heavy, not too light.\n", true, NULL, GoldPiece_Take, NULL);
 }
