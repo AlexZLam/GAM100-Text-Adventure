@@ -51,7 +51,6 @@ CommandList* CreateCommandList()
 	CommandList_Add(cmdListPtr, "t", HandleTakeCommand, false);
 
 	//new command: talk
-	CommandList_Add(cmdListPtr, "talk", HandleTalkCommand, true);
 
 	/* TODO REQUIRED: create the "use" command
 	TODO BASIC: add a short alias "u" */
@@ -73,6 +72,11 @@ CommandList* CreateCommandList()
 	CommandList_Add(cmdListPtr, "go", HandleGoCommand, true);
 	CommandList_Add(cmdListPtr, "g", HandleGoCommand, false);
 
+	CommandList_Add(cmdListPtr, "talk", HandleTalkCommand, true);
+	CommandList_Add(cmdListPtr, "tk", HandleTalkCommand, false);
+
+	CommandList_Add(cmdListPtr, "teleport", HandleTPCommand, true);
+	CommandList_Add(cmdListPtr, "tp", HandleTPCommand, false);
 	/* TODO ADVANCED: create aditional commands
 	this should require the creation of additional .c files to implement the command functions */
 

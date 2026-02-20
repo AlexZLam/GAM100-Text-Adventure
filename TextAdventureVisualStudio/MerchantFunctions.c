@@ -50,7 +50,7 @@ void Merchant_Use(CommandContext context, GameState* gameState, WorldData* world
 
         if (goldCnt >= 3)
         {
-            printf("You pay 3 coins and receive the orb.\n");
+            printf("You pay 3 gold and receive the orb.\n");
             gameState->inventory = ItemList_Add(gameState->inventory, Orb_Build());
         }
         else
