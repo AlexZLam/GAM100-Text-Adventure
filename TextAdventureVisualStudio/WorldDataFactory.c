@@ -194,7 +194,7 @@ Room* Room6_Build()
 	Room_AddRoomExitShortcut(room, "w", 4);
 
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	//ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build()); make portal
+	ItemList_AddItem(Room_GetItemList(room), GoldPiece_Build());
 	/* return the new room */
 	return room;
 }
@@ -217,7 +217,7 @@ WorldData* CreateInitialWorldData()
 
 	/* TODO REQUIRED: update room count to match the number of rooms you have created and added to the world
 	   if this number doesn't match then your game will either crash or you will end up stuck in a broken room with no exits */
-	int roomCount = 6;/* create the new WorldData object with 3 rooms */
+	int roomCount = 7;/* create the new WorldData object with 3 rooms */
 	worldData = WorldData_Create("Welcome to my GAM100 Game!\n\n", roomCount);
 
 	/* build each room and assign them to the world data */

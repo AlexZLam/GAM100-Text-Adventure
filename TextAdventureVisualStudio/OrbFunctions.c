@@ -51,5 +51,5 @@ void Orb_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 Item* Orb_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create("key", "the riddle key\n", true, Orb_Use, Orb_Take, NULL);
+	return Item_Create("orb", "the orb key\n", true, Orb_Use, Orb_Take, NULL);
 }
