@@ -11,7 +11,11 @@ This file declares the Room interface, which is used to manage rooms in the game
 #pragma once
 #include "stdafx.h" /* bool */
 
-typedef struct ItemList ItemList;
+#include "ItemList.h"
+
+#pragma once
+
+
 
 
 /* Forward declaration of the Room type */

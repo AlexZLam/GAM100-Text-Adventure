@@ -85,6 +85,9 @@
     <ClCompile Include="TalkCommandHandler.c">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="OrbFunctions.c">
+      <Filter>World Data\Item Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\CommandContext.h">
@@ -188,6 +191,9 @@
     </ClInclude>
     <ClInclude Include="TalkCommandHandler.h">
       <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbFunctions.h">
+      <Filter>World Data\Item Functions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

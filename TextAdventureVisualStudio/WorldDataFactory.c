@@ -156,7 +156,7 @@ Room* Room4_Build()
 	Room_AddRoomExit(room, "south", 3);
 	Room_AddRoomExitShortcut(room, "s", 3);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	ItemList_AddItem(Room_GetItemList(room), Merchant_Build();
+	ItemList_AddItem(Room_GetItemList(room), Merchant_Build());
 	/* return the new room */
 	return room;
 }

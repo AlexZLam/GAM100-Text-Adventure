@@ -15,11 +15,7 @@ items in the game.
 
 
 /* A linked list of items */
-typedef struct ItemList
-{
-	Item* item; /* The item referred to by this linked-list node */
-	ItemList* next; /* The next node in the list */
-} ItemList;
+
 
 
 /* Helper: Retrieve the number of items in the list */

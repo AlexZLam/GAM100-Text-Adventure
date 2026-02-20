@@ -1,22 +1,35 @@
-﻿  MerchantFunctions.c
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(43,45): error C2037: left of 'item' specifies undefined struct/union 'ItemList'
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(43,32): error C2198: 'Item_GetName': too few arguments for call
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(50,23): error C2037: left of 'next' specifies undefined struct/union 'ItemList'
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(56,80): warning C4047: 'function': 'Item *' differs in levels of indirection from 'Item *(*)()'
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\MerchantFunctions.c(56,71): warning C4024: 'ItemList_Add': different types for formal and actual parameter 2
+﻿  CommandListFactory.c
+  main.c
+  MerchantFunctions.c
   NotebookFunctions.c
+  OrbFunctions.c
   BrickFunctions.c
+  CommandHandler.c
+  CommandList.c
   DropCommandHandler.c
+  EggFunctions.c
   ExitDoorFunctions.c
+  GameFlags.c
   GameState.c
+  GameStateFactory.c
   GoCommandHandler.c
+  GoldPieceFunctions.c
+  HelpCommandHandler.c
+  InputProvider.c
   InventoryCommandHandler.c
+  Item.c
+  Generating Code...
+  Compiling...
   ItemList.c
   LookCommandHandler.c
+  QuitCommandHandler.c
   Room.c
+  RoomExit.c
+  stdafx.c
   TakeCommandHandler.c
   UseCommandHandler.c
+  WorldData.c
   TalkCommandHandler.c
   WorldDataFactory.c
-C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\WorldDataFactory.c(159,59): error C2143: syntax error: missing ')' before ';'
   Generating Code...
+  GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
