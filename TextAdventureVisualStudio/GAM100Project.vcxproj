@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="KeyFunctions.h" />
+    <ClInclude Include="SkeletonFunctions.h" />
     <ClInclude Include="WizardFunctions.h" />
     <ClInclude Include="NotebookFunctions.h" />
     <ClInclude Include="OrbFunctions.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="CommandListFactory.c" />
     <ClCompile Include="KeyFunctions.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="SkeletonFunctions.c" />
     <ClCompile Include="WizardFunctions.c" />
     <ClCompile Include="NotebookFunctions.c" />
     <ClCompile Include="OrbFunctions.c" />

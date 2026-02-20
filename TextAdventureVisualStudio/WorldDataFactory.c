@@ -19,7 +19,7 @@ This could be used to create default states as well as loaded state.
 #include "GoldPieceFunctions.h" /* GoldPiece_Build */
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
 #include "WizardFunctions.h"
-
+#include "SkeletonFunctions.h"
 
 #include "NotebookFunctions.h" /* Notebook_Build */
 
@@ -137,6 +137,7 @@ Room* Room3_Build()
 	Room_AddRoomExitShortcut(room, "w", 2);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
 	ItemList_AddItem(Room_GetItemList(room), Notebook_Build());
+	ItemList_AddItem(Room_GetItemList(room), Skeleton_Build());
 	/* return the new room */
 	return room;
 }
