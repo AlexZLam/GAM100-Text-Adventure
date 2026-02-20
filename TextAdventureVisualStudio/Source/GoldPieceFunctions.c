@@ -29,17 +29,52 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 	{
 		return; /* take no action if the parameters are invalid */
 	}
-
-	/* check if the gold piece has already been scored */
-	if (!GameFlags_IsInList(gameState->gameFlags, "goldPieceScored"))
+	if (gameState->currentRoomIndex == 6)
+	{
+		// indiana jones
+		printf("You take the gold piece from the pedestal. The pedestal rises up slightly. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
+		printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
+		int ans = 0;
+		scanf_s("%d", &ans);
+		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
+		scanf_s("");
+		if (ans == 1)
+		{
+			printf("The tense silence dissapates. You made the right choice.\n");
+		}
+		else if (ans == 2)
+		{
+			GameState_EndGame(gameState, "Then, the room explodes.\n");
+		}
+		return;
+	}
+	else
 	{
 		/* tell the user that something cool happens when they pick up the gold piece */
 		printf("The gold piece burns in your hand.  You're rich!\n");
 		/* add to the user's score */
 		GameState_ChangeScore(gameState, 5);
-		/* the gold piece has not been scored, so mark the flag */
-		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "goldPieceScored");
+
 	}
+}
+
+/* Helper: The action performed when the gold piece is dropped. */
+void GoldPiece_Drop(CommandContext context, GameState* gameState, WorldData* worldData)
+{
+	//cannot be dropped bc will be rescored if picked back up
+
+	/* avoid W4 warnings on unused parameters - this function conforms to a function typedef */
+	UNREFERENCED_PARAMETER(context);
+	UNREFERENCED_PARAMETER(worldData);
+
+	/* safety check on the parameters */
+	if (gameState == NULL)
+	{
+		return; /* take no action if the parameters are invalid */
+	}
+
+	printf("The gold piece is too valuable - why would you want to drop it?\n");
+	
 }
 
 
@@ -47,5 +82,5 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 Item* GoldPiece_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create("gold piece", "A small piece of gold\n", true, NULL, GoldPiece_Take, NULL);
+	return Item_Create("gold piece", "A small piece of gold. Its got a nice weight in your palm - not too heavy, not too light.\n", true, NULL, GoldPiece_Take, GoldPiece_Drop);
 }

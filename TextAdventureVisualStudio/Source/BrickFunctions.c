@@ -107,9 +107,9 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 	}
 	else if (gameState->currentRoomIndex == 6)
 	{
-		//TODO indiana jones
+		// indiana jones
 
-		printf("You try to replace the gold piece on the pedestal with the brick. The pedestal sinks down slightly. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
+		printf("You replace the gold piece on the pedestal with the brick. The pedestal sinks down slightly. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
 		printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
 		int ans = 0;
 		scanf_s("%d", &ans);
