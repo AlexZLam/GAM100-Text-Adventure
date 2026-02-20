@@ -119,6 +119,7 @@
     <ClInclude Include="Source\WorldData.h" />
     <ClInclude Include="Source\WorldDataFactory.h" />
     <ClInclude Include="TalkCommandHandler.h" />
+    <ClInclude Include="TeleportCommandFunctions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandListFactory.c" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Source\UseCommandHandler.c" />
     <ClCompile Include="Source\WorldData.c" />
     <ClCompile Include="TalkCommandHandler.c" />
+    <ClCompile Include="TeleportComandFunctions.c" />
     <ClCompile Include="WorldDataFactory.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
