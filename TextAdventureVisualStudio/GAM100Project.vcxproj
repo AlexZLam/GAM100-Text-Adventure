@@ -84,7 +84,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MerchantFunctions.h" />
+    <ClInclude Include="KeyFunctions.h" />
+    <ClInclude Include="WizardFunctions.h" />
     <ClInclude Include="NotebookFunctions.h" />
     <ClInclude Include="OrbFunctions.h" />
     <ClInclude Include="Source\BrickFunctions.h" />
@@ -123,8 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandListFactory.c" />
+    <ClCompile Include="KeyFunctions.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="MerchantFunctions.c" />
+    <ClCompile Include="WizardFunctions.c" />
     <ClCompile Include="NotebookFunctions.c" />
     <ClCompile Include="OrbFunctions.c" />
     <ClCompile Include="Source\BrickFunctions.c" />

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ItemList.h"   
-#include "MerchantFunctions.h"
+#include "WizardFunctions.h"
 #include "GameState.h"
 #include "GameFlags.h"
 #include "Item.h"
@@ -11,7 +11,7 @@
 
 
 
-void Merchant_Talk(CommandContext context, GameState* gameState, WorldData* worldData)
+void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldData)
 {
     UNREFERENCED_PARAMETER(context);
     UNREFERENCED_PARAMETER(worldData);
@@ -19,14 +19,38 @@ void Merchant_Talk(CommandContext context, GameState* gameState, WorldData* worl
     if (gameState == NULL || worldData == NULL)
         return;
     Item* orb = Orb_Build();
+    Item* key = Key_Build();
     int ans;
+    int ridAns;
     printf("What would you like to talk about?\n1: Riddle\n2: Orb\n");
     scanf_s("%d", &ans);
     while (getchar() != '\n');
 
     if (ans == 1)
     {
-        printf("Riddle\n");
+        if (ans == 1)
+        {
+            printf("I am the count of crowns worn by the hydra after three of its heads are cut away...\n");
+            printf("The wizard stutters and says he forgot the rest.\n");
+
+            printf("\nAnswer?: ");
+            scanf_s("%d", &ridAns);
+            while (getchar() != '\n');
+
+            if (ridAns == 4)
+            {
+                printf("The wizard grins, impressed. \"Correct!\"\n");
+                printf("He hands you the key\n");
+                gameState->inventory = ItemList_Add(gameState->inventory, key);
+            }
+            else
+            {
+                printf("The wizard sighs. \"Wrong... better luck next time.\"\n");
+          
+            }
+        }
+
+
     }
     else if (ans == 2)
     {
@@ -56,8 +80,8 @@ void Merchant_Talk(CommandContext context, GameState* gameState, WorldData* worl
     }
 }
 
-Item* Merchant_Build()
+Item* Wizard_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create_NPC("merchant", "the merchant\n", false, NULL, NULL, NULL, Merchant_Talk);
+	return Item_Create_NPC("wizard", "the wizard\n", false, NULL, NULL, NULL, Wizard_Talk);
 }

@@ -18,7 +18,7 @@ This could be used to create default states as well as loaded state.
 #include "BrickFunctions.h" /* Brick_Build */
 #include "GoldPieceFunctions.h" /* GoldPiece_Build */
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
-#include "MerchantFunctions.h"
+#include "WizardFunctions.h"
 
 
 #include "NotebookFunctions.h" /* Notebook_Build */
@@ -107,12 +107,12 @@ Room* Room2_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through. There is also a strange circular door to the south.\n");
+	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the west wall, just large enough to get through. There is also a strange circular door to the south.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "east", 3);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
 	Room_AddRoomExitShortcut(room, "e", 3);
-	Room_AddRoomExitShortcut(room, "crack", 0);
+	Room_AddRoomExitShortcut(room, "west", 0);
 	Room_AddRoomExit(room, "south", 5);
 	Room_AddRoomExitShortcut(room, "s", 5);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
@@ -156,7 +156,7 @@ Room* Room4_Build()
 	Room_AddRoomExit(room, "south", 3);
 	Room_AddRoomExitShortcut(room, "s", 3);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
-	ItemList_AddItem(Room_GetItemList(room), Merchant_Build());
+	ItemList_AddItem(Room_GetItemList(room), Wizard_Build());
 	/* return the new room */
 	return room;
 }
