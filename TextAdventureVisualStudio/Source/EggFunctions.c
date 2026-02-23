@@ -19,6 +19,7 @@ This file defines the functions to create a specific item, the "egg".
 #include "ItemList.h" /* ItemList_FindItem, ItemList_Add, ItemList_Remove */
 
 #include "RoomExit.h" // RoomExit_Free
+#include "WorldDataFactory.h" /*  Room4_Build_DeadWizard, Room4_Build_SavedWizard */
 
 typedef struct WorldData WorldData;
 
@@ -52,13 +53,15 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		//blow up room 6: kill wizard if hes in room 4, take away room 4 east exit and update room 4 description
 		if (!GameFlags_IsInList(gameState->gameFlags, "wizardMoved"))
 		{
-			//remove wizard from room 4
-			// 
-			//add his body to room 4
+			WorldData_SetRoom(worldData, 4, Room4_Build_DeadWizard());
 		}
-		Room *room4 = WorldData_GetRoom(worldData, 4);
-		RoomExit *roomExitListPtr = room4->roomExitHead;
-		RoomExit_Free(&roomExitListPtr);
+		else
+		{
+			WorldData_SetRoom(worldData, 4, Room4_Build_SavedWizard());
+		}
+		//Room *room4 = WorldData_GetRoom(worldData, 4);
+		//RoomExit *roomExitListPtr = room4->roomExitHead;
+		//RoomExit_Free(&roomExitListPtr);
 
 	}
 }

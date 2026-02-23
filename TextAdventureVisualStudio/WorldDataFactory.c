@@ -163,6 +163,39 @@ Room* Room4_Build()
 	/* return the new room */
 	return room;
 }
+
+//Room 4 after blown up
+Room* Room4_Build_DeadWizard()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 4. There is small cloaked body in the corner of the room, covered in rubble. The explosion seems to have come from the east exit, which is now blocked off.\n");
+	Room_AddRoomExit(room, "south", 3);
+	Room_AddRoomExitShortcut(room, "s", 3);
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	/* return the new room */
+	return room;
+}
+
+//Room 4 after blown up, if wizard saved
+Room* Room4_Build_SavedWizard()
+{
+	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	Room* room = NULL;
+
+	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
+	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	room = Room_Create("This is room 4. It is covered in rubble. The explosion seems to have come from the east exit, which is now blocked off.\n");
+	Room_AddRoomExit(room, "south", 3);
+	Room_AddRoomExitShortcut(room, "s", 3);
+	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	/* return the new room */
+	return room;
+}
+
 //Room 5
 Room* Room5_Build()
 {
