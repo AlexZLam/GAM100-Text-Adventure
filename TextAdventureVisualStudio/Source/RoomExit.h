@@ -12,10 +12,17 @@ in the game.
 #pragma once
 #include "stdafx.h" /* bool */
 
+/* The maximum length of an exit string */
+#define MAX_DIRECTION_LENGTH 32
 
-/* Forward declaration for the RoomExit type */
-typedef struct RoomExit RoomExit;
-
+/* A linked list of exits from a room to another room */
+typedef struct RoomExit
+{
+	char direction[MAX_DIRECTION_LENGTH]; /* The name of the exit, matched to command nouns */
+	bool showInHelp;
+	int nextRoomIndex; /* The index of the room in the specified direction */
+	struct RoomExit* next; /* The next exit in the list */
+} RoomExit;
 
 /* Adds an exit to a given list, which might be NULL (an empty list).  Returns the new head of the list */
 RoomExit* RoomExit_Add(RoomExit* existingList, const char* direction, int nextRoomIndex, bool showInHelp);

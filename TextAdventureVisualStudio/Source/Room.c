@@ -19,12 +19,7 @@ This file defines the Room interface, which is used to manage rooms in the game.
 
 
 /* A room in the game */
-typedef struct Room
-{
-	char description[MAX_ROOM_DESCRIPTION_LENGTH]; /* The description of the room */
-	ItemList* itemList; /* A list of items in the room */
-	RoomExit* roomExitHead; /* A list of exits from the room */
-} Room;
+
 
 
 /* Helper: Print the list of items in a room */
