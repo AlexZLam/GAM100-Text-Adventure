@@ -37,11 +37,19 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
             scanf_s("%d", &ridAns);
             while (getchar() != '\n');
 
-            if (ridAns == 4)
+            if (ridAns == 10)
             {
                 printf("The wizard grins, impressed. \"Correct!\"\n");
                 printf("He hands you the key\n");
                 gameState->inventory = ItemList_Add(gameState->inventory, key);
+            }
+            else if (ridAns == 4)
+            {
+                printf("The wizard laughs. \"Close, but remember, hydras have unique properties.\"\n");
+            }
+            else if (ridAns == 2 || ridAns == 8)
+            {
+                printf("The wizard hums. \"You'll have to look elsewhere for the second half of the riddle.\"\n");
             }
             else
             {

@@ -26,7 +26,7 @@ void Notebook_Take(CommandContext context, GameState* gameState, WorldData* worl
 	if (!GameFlags_IsInList(gameState->gameFlags, "notebookScored"))
 	{
 		/* tell the user that something cool happens when they pick up the gold piece */
-		printf("The old skeletons secrets are now in your hands!\n");
+		printf("The old skeleton's secrets are now in your hands!\n");
 		/* add to the user's score */
 		GameState_ChangeScore(gameState, 5);
 		/* the gold piece has not been scored, so mark the flag */
@@ -61,12 +61,12 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 		return;
 	}
 
-	Room_SetDescription(room, "This is room 3. There is a coin on the floor.\n");
+	Room_SetDescription(room, "This is room 3. There is a gold piece on the floor.\n");
 
 	*roomItemsPtr = ItemList_Add(*roomItemsPtr, GoldPiece_Build());
 	printf("You see soemthing shiny fall out of the book\n");
 	printf("The notebook says: \n");
-	printf("plus the number of eyes cyclops has twice over.\n");
+	printf("... plus the number of eyes cyclops has twice over.\n");
 }
 
 Item* Notebook_Build()
