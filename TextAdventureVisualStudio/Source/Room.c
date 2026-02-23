@@ -1,7 +1,7 @@
 /******************************************************************************
 filename    Room.c
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+author      Matthew Picioccio, Alexander Lam
+DP email    mattpic@digipen.edualexander.lam@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:

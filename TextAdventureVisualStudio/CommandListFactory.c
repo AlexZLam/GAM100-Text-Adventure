@@ -1,7 +1,7 @@
 /******************************************************************************
 filename    CommandFactory.c
-author      Justin Chambers
-DP email    justin.chambers@digipen.edu
+author      Justin Chambers, Alexander Lam, Diana Everman
+DP email    justin.chambers@digipen.edu, alexander.lam@digipen.edu, diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:

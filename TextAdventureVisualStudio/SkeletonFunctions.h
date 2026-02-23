@@ -1,11 +1,11 @@
 /******************************************************************************
-filename    BrickFunctions.h
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+filename    SkeletonFunctions.h
+author      Alexander Lam
+DP email    alexander.lam@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
-This file declares the functions to create a specific item, the "brick".
+This file declares the functions to create a specific item, the "skeleton".
 
 ******************************************************************************/
 #pragma once

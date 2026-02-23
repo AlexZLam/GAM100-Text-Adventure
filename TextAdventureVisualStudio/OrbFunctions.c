@@ -1,3 +1,13 @@
+/******************************************************************************
+filename    OrbFunctions.c
+author      Alexander Lam
+DP email    alexander.lam@digipen.edu
+course      GAM100 ** Do not use this code in your team project
+
+Brief Description:
+This file declares the functions of the orb which is used to open a door".
+
+******************************************************************************/
 #include "stdafx.h"
 #include "OrbFunctions.h"
 #include "GameState.h"

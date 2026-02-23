@@ -1,12 +1,12 @@
 /******************************************************************************
-filename    UseCommandHandler.h
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+filename    TalkCommandHandler.h
+author      Diana Everman
+DP email    diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
-This file declares functions that handle the "use" user command, which calls
-an item-specific function on a given item
+This file declares functions that handle the "talk" user command, which 
+lets the player talk to a npc
 
 ******************************************************************************/
 #pragma once

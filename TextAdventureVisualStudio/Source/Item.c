@@ -1,7 +1,7 @@
 /******************************************************************************
 filename    Item.c
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+author      Matthew Picioccio, Diana Everman
+DP email    mattpic@digipen.edu, diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:

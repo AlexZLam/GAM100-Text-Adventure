@@ -1,6 +1,6 @@
 /******************************************************************************
 filename    WorldDataFactory.c
-author      Justin Chambers
+author      Justin Chambers, Alexander Lam, Diana Everman
 DP email    justin.chambers@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
@@ -107,12 +107,14 @@ Room* Room2_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 2.  The room is isolated from the others, but you can see a crack in the west wall, just large enough to get through. There is also a strange circular door to the south.\n");
+	room = Room_Create("This is room 2. The room is isolated from the others, but you can see a crack in the west wall, just large enough to get through. There is a strange door to the east that has an egg shaped outline on it.There is also a strange circular door to the south.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "east", 3);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
 	Room_AddRoomExitShortcut(room, "e", 3);
-	Room_AddRoomExitShortcut(room, "west", 0);
+	Room_AddRoomExit(room, "west", 0);
+	Room_AddRoomExitShortcut(room, "w", 0);
+	Room_AddRoomExitShortcut(room, "crack", 0);
 	Room_AddRoomExit(room, "south", 5);
 	Room_AddRoomExitShortcut(room, "s", 5);
 	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
@@ -120,7 +122,7 @@ Room* Room2_Build()
 	/* return the new room */
 	return room;
 }
-
+//Room 3
 Room* Room3_Build()
 {
 	/* TODO: Pre-declare a room pointer which we will use to build the new room */
@@ -141,7 +143,7 @@ Room* Room3_Build()
 	/* return the new room */
 	return room;
 }
-
+//Room 4
 Room* Room4_Build()
 {
 	/* TODO: Pre-declare a room pointer which we will use to build the new room */
@@ -161,7 +163,7 @@ Room* Room4_Build()
 	/* return the new room */
 	return room;
 }
-
+//Room 5
 Room* Room5_Build()
 {
 	/* TODO: Pre-declare a room pointer which we will use to build the new room */
@@ -180,7 +182,7 @@ Room* Room5_Build()
 	/* return the new room */
 	return room;
 }
-
+//Room 6
 Room* Room6_Build()
 {
 	/* TODO: Pre-declare a room pointer which we will use to build the new room */
@@ -188,7 +190,7 @@ Room* Room6_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 6. There is a pedestal with an egg shaped rock sitting on it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
+	room = Room_Create("This is room 6. There is a pedestal with an egg looking inscription above it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "west", 4);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
@@ -199,14 +201,6 @@ Room* Room6_Build()
 	/* return the new room */
 	return room;
 }
-
-
-
-
-
-/* TODO ADVANCED: Build room 3 */
-/* TODO ADVANCED: Build room 4 */
-
 
 /* ------------------------------------------------------- */
 /* Create the world data for a new game */

@@ -1,3 +1,13 @@
+/******************************************************************************
+filename    KeyFunctions.c
+author      Alexander Lam
+DP email    alexander.lam@digipen.edu
+course      GAM100 ** Do not use this code in your team project
+
+Brief Description:
+This file declares the functions to create the key which is used to open a door
+
+******************************************************************************/
 #include "stdafx.h"
 #include "KeyFunctions.h"
 #include "GameState.h"

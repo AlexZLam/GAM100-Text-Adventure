@@ -1,7 +1,7 @@
 /******************************************************************************
-filename    TakeCommandHandler.c
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+filename    TalkCommandHandler.c
+author      Diana Everman
+DP email    diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
