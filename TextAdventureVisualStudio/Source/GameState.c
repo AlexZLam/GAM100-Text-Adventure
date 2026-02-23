@@ -14,7 +14,6 @@ in the game.
 #include "ItemList.h" /* ItemList_Free */
 #include "GameFlags.h" /* GameFlags_Free */
 
-
 /* Create an empty game state object */
 GameState* GameState_Create()
 {
@@ -33,6 +32,8 @@ GameState* GameState_Create()
 	gameState->inventory = NULL;
 	gameState->gameFlags = NULL;
 	gameState->isRunning = true;
+	gameState->wizardReadyToCarry = false;
+
 
 	/* return the new object */
 	return gameState;

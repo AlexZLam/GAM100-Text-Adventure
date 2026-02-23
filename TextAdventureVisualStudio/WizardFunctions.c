@@ -19,7 +19,7 @@ This file defines the wizard interface, which is an npc in the game
 #include "OrbFunctions.h"
 #include "KeyFunctions.h"
 
-
+int takeCnt = 0;
 
 void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldData)
 {
@@ -33,8 +33,10 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
     int ans;
     int ridAns;
     printf("What would you like to talk about?\n1: Riddle\n2: Orb\n");
-    //check if flag is activated
-    printf("3: Save\n");
+    if (GameFlags_IsInList(gameState->gameFlags, "portalUsed"))
+    {
+        printf("3: Save\n");
+    }    
     scanf_s("%d", &ans);
     while (getchar() != '\n');
 
@@ -93,20 +95,48 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
             printf("You don't have enough gold.\n");
         }
     }
-    else if (ans == 3)
+    else if (ans == 3 && GameFlags_IsInList(gameState->gameFlags, "portalUsed"))
     {
-        //is flag activated
+        gameState->wizardReadyToCarry = true;
         printf("\"I'M GONNA EXPLODE?!!?!\"");
         printf("The wizard jumps off the apple crate he was standing on and runs towards the exit.\nHe then runs into the door frame and is knocked out.\n");
         printf("His little body looks so easy carry.\n");
+        gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "wizardMoved");
     }
 }
 
+void Wizard_Take(CommandContext context, GameState* gameState, WorldData* worldData)
+{
+    UNREFERENCED_PARAMETER(context);
+    UNREFERENCED_PARAMETER(worldData);
+
+    if (gameState == NULL || worldData == NULL)
+        return;
+    takeCnt++;
+    if (takeCnt < 2)
+    {
+        printf("\"Don't touch me!\"\n");
+    }
+    if (takeCnt == 2)
+    {
+        printf("\"Stop it!\"\n");
+    }
+    if (takeCnt == 3)
+    {
+        printf("He begins to run in circles\n");
+        gameState->wizardReadyToCarry = true;
+    }
+    if (takeCnt >= 4)
+    {
+        printf("You catch him and tie him to your back\n");
+        GameState_ChangeScore(gameState, 5);
+    }
+}
 
 
 
 Item* Wizard_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create_NPC("wizard", "the wizard\n", true, NULL, NULL, NULL, Wizard_Talk);
+	return Item_Create_NPC("wizard", "the wizard\n", true, NULL, Wizard_Take, NULL, Wizard_Talk);
 }
