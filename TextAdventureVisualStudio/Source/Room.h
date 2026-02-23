@@ -12,14 +12,21 @@ This file declares the Room interface, which is used to manage rooms in the game
 #include "stdafx.h" /* bool */
 
 #include "ItemList.h"
+#include "RoomExit.h"
 
 #pragma once
 
 
 
+#define MAX_ROOM_DESCRIPTION_LENGTH 256
 
 /* Forward declaration of the Room type */
-typedef struct Room Room;
+typedef struct Room
+{
+	char description[MAX_ROOM_DESCRIPTION_LENGTH]; /* The description of the room */
+	ItemList* itemList; /* A list of items in the room */
+	RoomExit* roomExitHead; /* A list of exits from the room */
+} Room;
 
 
 /* Create an Room object with the provided data */

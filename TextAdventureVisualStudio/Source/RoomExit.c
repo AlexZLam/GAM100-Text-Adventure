@@ -12,21 +12,6 @@ in the game.
 #include "stdafx.h" /* NULL, printf, malloc/free, strcpy_s, strcmp */
 #include "RoomExit.h" /* Function declarations */
 
-
-/* The maximum length of an exit string */
-#define MAX_DIRECTION_LENGTH 32
-
-
-/* A linked list of exits from a room to another room */
-typedef struct RoomExit
-{
-	char direction[MAX_DIRECTION_LENGTH]; /* The name of the exit, matched to command nouns */
-	bool showInHelp;
-	int nextRoomIndex; /* The index of the room in the specified direction */
-	struct RoomExit* next; /* The next exit in the list */
-} RoomExit;
-
-
 /* Helper: Retrieve the number of exits in the list */
 unsigned int RoomExit_GetCountVisible(RoomExit* roomExitList);
 
