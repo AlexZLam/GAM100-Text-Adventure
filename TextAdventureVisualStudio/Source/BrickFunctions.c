@@ -113,6 +113,7 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 		printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
 		int ans = 0;
 		scanf_s("%d", &ans);
+		while (getchar() != '\n');
 		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 		scanf_s("");
 		if (ans == 1)
