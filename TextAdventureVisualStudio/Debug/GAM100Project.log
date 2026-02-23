@@ -1,2 +1,4 @@
-﻿  DropCommandHandler.c
+﻿  TakeCommandHandler.c
+  WizardFunctions.c
+  Generating Code...
   GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe

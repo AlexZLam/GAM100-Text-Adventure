@@ -36,6 +36,8 @@ typedef struct GameState
 
 	/* If false, the game is over and should exit */
 	bool isRunning;
+
+	bool wizardReadyToCarry;
 } GameState;
 
 /* Create an empty game state object */

@@ -43,11 +43,20 @@ void HandleTakeCommand(CommandData *command, GameState* gameState, WorldData* wo
 		return; /* there was no room or item list pointer - something is wrong.  take no action */
 	}
 
-	/* find the item in the current room's item list, using the command noun */
+	/* find the item in the current room's item list */
 	takenItem = ItemList_FindItem(*roomItemPtr, command->noun);
+
+	/* SPECIAL CASE: wizard cannot be taken until ready */
+	if (strcmp(command->noun, "wizard") == 0 && !gameState->wizardReadyToCarry)
+	{
+		takeFunc = Item_GetTakeFunc(takenItem);
+		takeFunc(CommandContext_Item_Room, gameState, worldData);
+		return;
+	}
+
+
 	if (takenItem == NULL)
 	{
-		/* the item was not found - inform the user of the problem and take no action */
 		printf("You do not see a %s here.\n", command->noun);
 		return;
 	}
