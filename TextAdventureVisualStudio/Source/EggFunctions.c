@@ -83,62 +83,67 @@ void Egg_Drop(CommandContext context, GameState* gameState, WorldData* worldData
 	*/
 }
 
-/* Helper: The action performed when the egg is dropped. */
+/* Helper: The action performed when the egg is used. */
 void Egg_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 {
 	/* avoid W4 warnings on unused parameters - this function conforms to a function typedef */
 	UNREFERENCED_PARAMETER(context);
 	UNREFERENCED_PARAMETER(worldData);
-
-	// indiana jones
-	printf("You replace the gold piece on the pedestal with the egg. The pedestal rises up slightly, then sinks down. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
-	printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
-	int ans = 0;
-	scanf_s("%d", &ans);
-	printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
-	scanf_s("");
-	if (ans == 1)
+	if (gameState->currentRoomIndex == 6)
 	{
-		printf("The tense silence dissapates. \n");
-	}
-	else if (ans == 2)
-	{
-		printf("The tense silence dissapates. You made the right choice, and now you have the gold piece!\n");
 
-		Item* takenItem; /* the item removed from the room and added to the user's inventory */
-		Room* room; /* the current room */
-		ItemList** roomItemPtr; /* the list of items in the current room */
-
-		/* retrieve the current room */
-		room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
-
-		/* get the current room's item list */
-		roomItemPtr = Room_GetItemList(room);
-		if (roomItemPtr == NULL)
+		// indiana jones
+		printf("You replace the gold piece on the pedestal with the egg. The pedestal rises up slightly, then sinks down. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
+		printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
+		int ans = 0;
+		scanf_s("%d", &ans);
+		while (getchar() != '\n');
+		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
+		scanf_s("");
+		while (getchar() != '\n');
+		if (ans == 1)
 		{
-			return; /* there was no room or item list pointer - something is wrong.  take no action */
+			printf("The tense silence dissapates. \n");
 		}
+		else if (ans == 2)
+		{
+			printf("The tense silence dissapates. You made the right choice, and now you have the gold piece!\n");
 
-		/* find the item in the current room's item list, using the command noun */
-		takenItem = ItemList_FindItem(*roomItemPtr, "gold piece");
-		/* remove the item from the room */
-		*roomItemPtr = ItemList_Remove(*roomItemPtr, takenItem);
+			Item* takenItem; /* the item removed from the room and added to the user's inventory */
+			Room* room; /* the current room */
+			ItemList** roomItemPtr; /* the list of items in the current room */
 
-		/* add the item to the user's inventory */
-		gameState->inventory = ItemList_Add(gameState->inventory, takenItem);
+			/* retrieve the current room */
+			room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
 
-		/* tell the user that something cool happens when they pick up the gold piece */
-		printf("The gold piece burns in your hand.  You're rich!\n");
-		/* add to the user's score */
-		GameState_ChangeScore(gameState, 5);
+			/* get the current room's item list */
+			roomItemPtr = Room_GetItemList(room);
+			if (roomItemPtr == NULL)
+			{
+				return; /* there was no room or item list pointer - something is wrong.  take no action */
+			}
 
+			/* find the item in the current room's item list, using the command noun */
+			takenItem = ItemList_FindItem(*roomItemPtr, "gold piece");
+			/* remove the item from the room */
+			*roomItemPtr = ItemList_Remove(*roomItemPtr, takenItem);
+
+			/* add the item to the user's inventory */
+			gameState->inventory = ItemList_Add(gameState->inventory, takenItem);
+
+			/* tell the user that something cool happens when they pick up the gold piece */
+			printf("The gold piece burns in your hand.  You're rich!\n");
+			/* add to the user's score */
+			GameState_ChangeScore(gameState, 5);
+
+		}
+		return;
 	}
-	return;
 }
 
 /* Build a "egg" object */
 Item* Egg_Build()
 {
 	/* Create a "egg" item, using the functions defined in this file */
-	return Item_Create("egg", "The fragile egg is beautiful iridescent green, and it is obviously very valuable. Its large, but lighter than it looks.\n", true, NULL, Egg_Take, Egg_Drop);
+	return Item_Create("egg", "The fragile egg is beautiful iridescent green, and it is obviously very valuable. Its large, but lighter than it looks.\n", true, Egg_Use, Egg_Take, Egg_Drop);
 }
