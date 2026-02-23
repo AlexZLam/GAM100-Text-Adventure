@@ -5,8 +5,7 @@ DP email    justin.chambers@digipen.edu, alexander.lam@digipen.edu, diana.everma
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
-This file implements the CommandList factory, creating the commands used 
-in this game.
+This file implements the CommandList factory, creating the commands used in this game.
 
 ******************************************************************************/
 #include "stdafx.h" /* NULL */
