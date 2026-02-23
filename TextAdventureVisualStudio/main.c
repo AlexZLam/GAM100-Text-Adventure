@@ -1,6 +1,6 @@
 /******************************************************************************
 filename    main.c
-author      Justin Chambers
+author      Justin Chambers, Diana Everman
 DP email    justin.chambers@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 

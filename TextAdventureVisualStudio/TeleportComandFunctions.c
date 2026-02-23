@@ -1,12 +1,11 @@
 /******************************************************************************
-filename    GoCommandHandler.c
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+filename    TeleportCommandFunctions.c
+author      Alexander Lam
+DP email    alexander.lam@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
-This file defines functions that handle the "go" user command, which moves
-the user from one room to another using defined exits.
+Teleports a player to a given room index. Moslty for debugging
 
 ******************************************************************************/
 #include "stdafx.h" /* NULL, printf */
@@ -18,7 +17,7 @@ the user from one room to another using defined exits.
 #include "ItemList.h" /* ItemList_ContainsItem */
 
 
-/* Handles the "go" command, which moves the user to another room */
+/* Handles the "TP" command, which moves the user to another room */
 void HandleTPCommand(CommandData* command, GameState* gameState, WorldData* worldData)
 {
 	Room* currentRoom;

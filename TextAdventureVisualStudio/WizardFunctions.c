@@ -1,3 +1,13 @@
+/******************************************************************************
+filename    WizardFunctions.c
+author      Alexander Lam
+DP email    alexander.lam@digipen.edu
+course      GAM100 ** Do not use this code in your team project
+
+Brief Description:
+This file defines the wizard interface, which is an npc in the game
+
+******************************************************************************/
 #include "stdafx.h"
 #include "ItemList.h"   
 #include "WizardFunctions.h"
