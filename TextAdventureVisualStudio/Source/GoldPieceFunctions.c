@@ -36,8 +36,10 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 		printf("What do you do? 1: Put the coin back. 2: Leave it as is.\n");
 		int ans = 0;
 		scanf_s("%d", &ans);
+		while (getchar() != '\n');
 		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 		scanf_s("");
+		while (getchar() != '\n');
 		if (ans == 1)
 		{
 			printf("The tense silence dissapates. You made the right choice.\n");
