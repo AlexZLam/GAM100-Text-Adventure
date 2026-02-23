@@ -77,6 +77,7 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 	printf("You see soemthing shiny fall out of the book\n");
 	printf("The notebook says: \n");
 	printf("... plus the number of eyes cyclops has twice over.\n");
+	GameState_ChangeScore(gameState, 5);
 }
 
 Item* Notebook_Build()

@@ -47,6 +47,7 @@ void Skeleton_Talk(CommandContext context, GameState* gameState, WorldData* worl
     {
         printf("\"Kanye wasn't that bad\"\n");
         printf("It was an evil skeleton. Maybe it's a good thing he died\n");
+        GameState_ChangeScore(gameState, 5);
     }
 }
 

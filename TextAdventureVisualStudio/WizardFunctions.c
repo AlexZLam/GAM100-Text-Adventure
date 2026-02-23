@@ -33,42 +33,39 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
     int ans;
     int ridAns;
     printf("What would you like to talk about?\n1: Riddle\n2: Orb\n");
+    //check if flag is activated
+    printf("3: Save\n");
     scanf_s("%d", &ans);
     while (getchar() != '\n');
 
     if (ans == 1)
     {
-        if (ans == 1)
+        printf("I am the count of crowns worn by the hydra after three of its heads are cut away...\n");
+        printf("The wizard stutters and says he forgot the rest.\n");
+
+        printf("\nAnswer?: ");
+        scanf_s("%d", &ridAns);
+        while (getchar() != '\n');
+
+        if (ridAns == 10)
         {
-            printf("I am the count of crowns worn by the hydra after three of its heads are cut away...\n");
-            printf("The wizard stutters and says he forgot the rest.\n");
-
-            printf("\nAnswer?: ");
-            scanf_s("%d", &ridAns);
-            while (getchar() != '\n');
-
-            if (ridAns == 10)
-            {
-                printf("The wizard grins, impressed. \"Correct!\"\n");
-                printf("He hands you the key\n");
-                gameState->inventory = ItemList_Add(gameState->inventory, key);
-            }
-            else if (ridAns == 4)
-            {
-                printf("The wizard laughs. \"Close, but remember, hydras have unique properties.\"\n");
-            }
-            else if (ridAns == 2 || ridAns == 8)
-            {
-                printf("The wizard hums. \"You'll have to look elsewhere for the second half of the riddle.\"\n");
-            }
-            else
-            {
-                printf("The wizard sighs. \"Wrong... better luck next time.\"\n");
-          
-            }
+            printf("The wizard grins, impressed. \"Correct!\"\n");
+            printf("He hands you the key\n");
+            gameState->inventory = ItemList_Add(gameState->inventory, key);
         }
+        else if (ridAns == 4)
+        {
+            printf("The wizard laughs. \"Close, but remember, hydras have unique properties.\"\n");
+        }
+        else if (ridAns == 2 || ridAns == 8)
+        {
+            printf("The wizard hums. \"You'll have to look elsewhere for the second half of the riddle.\"\n");
+        }
+        else
+        {
+            printf("The wizard sighs. \"Wrong... better luck next time.\"\n");
 
-
+        }
     }
     else if (ans == 2)
     {
@@ -96,10 +93,20 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
             printf("You don't have enough gold.\n");
         }
     }
+    else if (ans == 3)
+    {
+        //is flag activated
+        printf("\"I'M GONNA EXPLODE?!!?!\"");
+        printf("The wizard jumps off the apple crate he was standing on and runs towards the exit.\nHe then runs into the door frame and is knocked out.\n");
+        printf("His little body looks so easy carry.\n");
+    }
 }
+
+
+
 
 Item* Wizard_Build()
 {
 	/* Create a "gold piece" item, using the functions defined in this file */
-	return Item_Create_NPC("wizard", "the wizard\n", false, NULL, NULL, NULL, Wizard_Talk);
+	return Item_Create_NPC("wizard", "the wizard\n", true, NULL, NULL, NULL, Wizard_Talk);
 }
