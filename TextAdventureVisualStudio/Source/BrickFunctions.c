@@ -116,6 +116,7 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 		while (getchar() != '\n');
 		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 		scanf_s("");
+		while (getchar() != '\n');
 		if (ans == 1)
 		{
 			printf("The tense silence dissapates. You made the right choice.\n");
