@@ -1,6 +1,6 @@
 /******************************************************************************
 filename    ExitDoorFunctions.c
-author      Matthew Picioccio
+author      Matthew Picioccio, Diana Everman
 DP email    mattpic@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 

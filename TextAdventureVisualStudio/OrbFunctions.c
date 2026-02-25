@@ -1,6 +1,6 @@
 /******************************************************************************
 filename    OrbFunctions.c
-author      Alexander Lam
+author      Alexander Lam, Diana Everman
 DP email    alexander.lam@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 

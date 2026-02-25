@@ -70,10 +70,10 @@ CommandList* CreateCommandList()
 	TODO BASIC: add a short alias "g" */
 	CommandList_Add(cmdListPtr, "go", HandleGoCommand, true);
 	CommandList_Add(cmdListPtr, "g", HandleGoCommand, false);
-
+	//Talk command
 	CommandList_Add(cmdListPtr, "talk", HandleTalkCommand, true);
 	CommandList_Add(cmdListPtr, "tk", HandleTalkCommand, false);
-
+	//teleport command
 	CommandList_Add(cmdListPtr, "teleport", HandleTPCommand, true);
 	CommandList_Add(cmdListPtr, "tp", HandleTPCommand, false);
 	/* TODO ADVANCED: create aditional commands

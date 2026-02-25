@@ -10,7 +10,6 @@ This file declares the Room interface, which is used to manage rooms in the game
 ******************************************************************************/
 #pragma once
 #include "stdafx.h" /* bool */
-
 #include "ItemList.h"
 #include "RoomExit.h"
 
