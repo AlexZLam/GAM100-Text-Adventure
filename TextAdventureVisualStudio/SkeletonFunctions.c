@@ -46,11 +46,15 @@ void Skeleton_Talk(CommandContext context, GameState* gameState, WorldData* worl
         printf("He turn toward you but quickly turns back around\n");
         GameState_ChangeScore(gameState, 2);
     }
-    if (talkCnt >= 4)
+    if (talkCnt == 4)
     {
         printf("\"Kanye wasn't that bad\"\n");
         printf("It was an evil skeleton. Maybe it's a good thing he died\n");
         GameState_ChangeScore(gameState, 5);
+    }
+    if (talkCnt > 4)
+    {
+        printf("The skeleton doesn't have anything else to say to you.\n");
     }
 }
 

@@ -56,6 +56,7 @@ void Key_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 		return;
 	}
 	printf("This a key from the little wizard.\n");
+	printf("Where should I put this?\n");
 }
 
 Item* Key_Build()
