@@ -21,6 +21,7 @@ This file defines the functions to create a specific item, the "egg".
 #include "RoomExit.h" // RoomExit_Free
 #include "WorldDataFactory.h" /*  Room4_Build_DeadWizard, Room4_Build_SavedWizard */
 
+
 typedef struct WorldData WorldData;
 
 
@@ -37,6 +38,28 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		return; /* take no action if the parameters are invalid */
 	}
 
+	if (gameState->currentRoomIndex == 6)
+	{
+		// indiana jones
+		printf("You take the egg from the pedestal. The pedestal rises up slightly. \nThere is a mechanical thunk, and a whirring, ticking sound.\n");
+		printf("What do you do? 1: Put the egg back. 2: Leave it as is.\n");
+		int ans = 0;
+		scanf_s("%d", &ans);
+		while (getchar() != '\n');
+		printf("The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
+		scanf_s("");
+		while (getchar() != '\n');
+		if (ans == 1)
+		{
+			printf("The tense silence dissapates. You made the right choice.\n");
+		}
+		else if (ans == 2)
+		{
+			GameState_EndGame(gameState, "Then, the room explodes.\n");
+		}
+		return;
+	}
+
 	/* check if the egg has already been scored */
 	if (!GameFlags_IsInList(gameState->gameFlags, "eggScored"))
 	{
@@ -50,8 +73,9 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 	// hand portal: take in room 5 to blow up room 6
 	if (gameState->currentRoomIndex == 5)
 	{
+		Room* room4 = WorldData_GetRoom(worldData, 4);
 		//blow up room 6: kill wizard if hes in room 4, take away room 4 east exit and update room 4 description
-		if (!GameFlags_IsInList(gameState->gameFlags, "wizardMoved"))
+		if (ItemList_FindItem(room4->itemList, "wizard") != NULL)
 		{
 			WorldData_SetRoom(worldData, 4, Room4_Build_DeadWizard());
 		}
@@ -59,9 +83,6 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		{
 			WorldData_SetRoom(worldData, 4, Room4_Build_SavedWizard());
 		}
-		//Room *room4 = WorldData_GetRoom(worldData, 4);
-		//RoomExit *roomExitListPtr = room4->roomExitHead;
-		//RoomExit_Free(&roomExitListPtr);
 
 	}
 }
@@ -135,6 +156,22 @@ void Egg_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 			printf("The gold piece burns in your hand.  You're rich!\n");
 			/* add to the user's score */
 			GameState_ChangeScore(gameState, 5);
+			
+
+			/* find the dropped item in the player's inventory */
+			Item *droppedItem = ItemList_FindItem(gameState->inventory, "egg");
+			if (droppedItem == NULL)
+			{
+				/* if the item wasn't found, then the player doesn't have it so they can't drop it */
+				printf("You do not have an egg.\n");
+				return;
+			}
+
+			/* remove the item from inventory and assign the inventory pointer back to the game state */
+			gameState->inventory = ItemList_Remove(gameState->inventory, droppedItem);
+
+			/* add the item to the room's item list */
+			*roomItemPtr = ItemList_Add(*roomItemPtr, droppedItem);
 
 		}
 		return;

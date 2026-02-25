@@ -1,16 +1,1 @@
-﻿  KeyFunctions.c
-  PortalFunctions.c
-  SkeletonFunctions.c
-  WizardFunctions.c
-  NotebookFunctions.c
-  OrbFunctions.c
-  BrickFunctions.c
-  DropCommandHandler.c
-  EggFunctions.c
-  ExitDoorFunctions.c
-  GoCommandHandler.c
-  TakeCommandHandler.c
-  TalkCommandHandler.c
-  TeleportComandFunctions.c
-  Generating Code...
-  GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
+﻿  GAM100Project.vcxproj -> C:\Users\diana.everman\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
