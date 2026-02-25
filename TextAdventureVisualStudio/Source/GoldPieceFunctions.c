@@ -9,10 +9,13 @@ This file defines the functions to create a specific item, the "gold piece".
 
 ******************************************************************************/
 #include "stdafx.h"
-#include "GoldPieceFunctions.h"
 #include "GameState.h"
 #include "GameFlags.h"
 #include "Item.h"
+#include "Room.h"
+#include "WorldData.h" /* WorldData_GetRoom */
+#include "ItemList.h" /* ItemList_FindItem, ItemList_Remove, ItemList_Add */
+#include "GoldPieceFunctions.h" /* Egg_Build */
 
 typedef struct WorldData WorldData;
 
@@ -23,11 +26,16 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 	/* avoid W4 warnings on unused parameters - this function conforms to a function typedef */
 	UNREFERENCED_PARAMETER(context);
 	UNREFERENCED_PARAMETER(worldData);
-
+	Room* room;
+	room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
 	/* safety check on the parameters */
 	if (gameState == NULL)
 	{
 		return; /* take no action if the parameters are invalid */
+	}
+	if (gameState->currentRoomIndex == 3)
+	{
+		Room_SetDescription(room, "This is room 3.  There is skeleton in the corner of the room. He looks very tired. He also has a notebook. there is a door north\n");
 	}
 	if (gameState->currentRoomIndex == 6)
 	{
