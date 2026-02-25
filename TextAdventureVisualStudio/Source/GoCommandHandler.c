@@ -18,6 +18,8 @@ exits.
 #include "Room.h" /* Room_GetNextRoomIndex, Room_Print, INVALID_DIRECTION_ID */
 #include "ItemList.h" /* ItemList_ContainsItem */
 
+#include "GameFlags.h" /* GameFlags_IsInList, GameFlags_Add */
+
 
 /* Handles the "go" command, which moves the user to another room */
 void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worldData)
@@ -64,27 +66,31 @@ void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worl
 	//don't let player go through certain exits if they don't have the right item
 	if (gameState->currentRoomIndex == 2 && nextRoomIndex == 3)
 	{
-		if (ItemList_FindItem(gameState->inventory, "egg") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "egg") == NULL && !GameFlags_IsInList(gameState->gameFlags, "eggDoorOpened"))
 		{
 			printf("The egg-shaped door does not budge.\n");
 			return;
 		}
+		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "eggDoorOpened");
+
 	}
 	else if (gameState->currentRoomIndex == 2 && nextRoomIndex == 5)
 	{
-		if (ItemList_FindItem(gameState->inventory, "orb") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "orb") == NULL && !GameFlags_IsInList(gameState->gameFlags, "orbDoorOpened"))
 		{
 			printf("The door has a magical aura to it. It does not budge.\n");
 			return;
 		}
+		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "orbDoorOpened");
 	}
 	else if (gameState->currentRoomIndex == 4 && nextRoomIndex == 6)
 	{
-		if (ItemList_FindItem(gameState->inventory, "key") == NULL)
+		if (ItemList_FindItem(gameState->inventory, "key") == NULL && !GameFlags_IsInList(gameState->gameFlags, "keyDoorOpened"))
 		{
 			printf("The door has a keyhole. It does not budge.\n");
 			return;
 		}
+		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "keyDoorOpened");
 	}
 
 	/* update the game state to move to the new room */

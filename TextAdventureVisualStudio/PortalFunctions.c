@@ -17,6 +17,8 @@ This file declares the functions of the small portal in room 5.
 #include "WorldData.h" /* WorldData_GetRoom */
 #include "WorldDataFactory.h" /*  Room4_Build_DeadWizard, Room4_Build_SavedWizard */
 
+#include "EggFunctions.h" /* egg build */
+
 typedef struct WorldData WorldData;
 bool portalBoom = false;
 
@@ -79,6 +81,9 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 			WorldData_SetRoom(worldData, 4, Room4_Build_SavedWizard());
 			GameState_ChangeScore(gameState, 10);
 		}
+
+		//add egg to inventory
+		gameState->inventory = ItemList_Add(gameState->inventory, Egg_Build());
 	}
 	return;
 }
