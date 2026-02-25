@@ -8,11 +8,13 @@ Brief Description:
 This file defines the functions to create a specific item, the "gold piece".
 
 ******************************************************************************/
-#include "stdafx.h"
-#include "GoldPieceFunctions.h"
 #include "GameState.h"
 #include "GameFlags.h"
 #include "Item.h"
+#include "Room.h"
+#include "WorldData.h" /* WorldData_GetRoom */
+#include "ItemList.h" /* ItemList_FindItem, ItemList_Remove, ItemList_Add */
+#include "GoldPieceFunctions.h"
 
 typedef struct WorldData WorldData;
 
@@ -28,6 +30,12 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 	if (gameState == NULL)
 	{
 		return; /* take no action if the parameters are invalid */
+	}
+	Room* room;
+	room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
+	if (gameState->currentRoomIndex == 3)
+	{
+		Room_SetDescription(room, "This is room 3. There is skeleton in the corner of the room. He looks very tired. There is a door north\n");
 	}
 	if (gameState->currentRoomIndex == 6)
 	{
@@ -53,7 +61,7 @@ void GoldPiece_Take(CommandContext context, GameState* gameState, WorldData* wor
 	else
 	{
 		/* tell the user that something cool happens when they pick up the gold piece */
-		printf("The gold piece burns in your hand.  You're rich!\n");
+		printf("The gold piece burns in your hand. You're rich!\n");
 		/* add to the user's score */
 		GameState_ChangeScore(gameState, 5);
 

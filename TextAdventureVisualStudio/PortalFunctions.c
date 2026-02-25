@@ -18,10 +18,16 @@ This file declares the functions of the small portal in room 5.
 #include "WorldData.h" /* WorldData_GetRoom */
 
 typedef struct WorldData WorldData;
+bool portalBoom = false;
 
 
 void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 {
+	if (portalBoom)
+	{
+		printf("The portal dissapeared remember?\n");
+		return;
+	}
 	if ((gameState == NULL) || (worldData == NULL))
 	{
 		return; /* take no action if the parameters are invalid */
@@ -40,6 +46,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 	printf("What do you do? 1: Put the egg back. 2: Leave it as is.\n");
 	int ans = 0;
 	scanf_s("%d", &ans);
+	while (getchar() != '\n');
 	printf("You withdraw your hand. The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 	scanf_s("");
 	if (ans == 1)
@@ -54,6 +61,8 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 		if (ItemList_FindItem(room4->itemList, "wizard") != NULL)
 		{
 			printf("You hear a shrill scream from outside the room. You've made the right choice to progress, but at what cost?\n");
+			printf("The portals into itself and dissapears\n");
+			portalBoom = true;
 		}
 		else
 		{

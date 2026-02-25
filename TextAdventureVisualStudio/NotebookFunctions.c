@@ -19,6 +19,7 @@ This file declares the functions to create the notebook which offers the hint fo
 #include "GoldPieceFunctions.h" /* Egg_Build */
 
 typedef struct WorldData WorldData;
+bool openedBook = false;
 
 void Notebook_Take(CommandContext context, GameState* gameState, WorldData* worldData)
 {
@@ -70,15 +71,17 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 		printf("You must have the notebook before you can use it.\n");
 		return;
 	}
-
-	Room_SetDescription(room, "This is room 3. There is a gold piece on the floor.\n");
+	if(openedBook==false)
+		Room_SetDescription(room, "This is room 3. There is a gold piece on the floor.\n");
 
 	*roomItemsPtr = ItemList_Add(*roomItemsPtr, GoldPiece_Build());
-	printf("You see soemthing shiny fall out of the book\n");
+	printf("You see something shiny fall out of the book\n");
 	printf("The notebook says: \n");
 	printf("... plus the number of eyes cyclops has twice over.\n");
 	GameState_ChangeScore(gameState, 5);
+	openedBook = true;
 }
+
 
 Item* Notebook_Build()
 {
