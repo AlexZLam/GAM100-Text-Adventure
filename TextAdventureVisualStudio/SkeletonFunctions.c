@@ -34,14 +34,17 @@ void Skeleton_Talk(CommandContext context, GameState* gameState, WorldData* worl
     if (talkCnt < 2)
     {
         printf("His heads turn to the side a little bit\n");
+        GameState_ChangeScore(gameState, 1);
     }
     if (talkCnt == 2)
     {
         printf("He shifts back into the corner\n");
+        GameState_ChangeScore(gameState, 2);
     }
     if (talkCnt == 3)
     {
         printf("He turn toward you but quickly turns back around\n");
+        GameState_ChangeScore(gameState, 2);
     }
     if (talkCnt >= 4)
     {

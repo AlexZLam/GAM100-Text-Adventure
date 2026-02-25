@@ -98,10 +98,9 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
     else if (ans == 3 && GameFlags_IsInList(gameState->gameFlags, "portalUsed"))
     {
         gameState->wizardReadyToCarry = true;
-        printf("\"I'M GONNA EXPLODE?!!?!\"");
+        printf("\"I'M GONNA EXPLODE?!!?!\"\n");
         printf("The wizard jumps off the apple crate he was standing on and runs towards the exit.\nHe then runs into the door frame and is knocked out.\n");
         printf("His little body looks so easy carry.\n");
-        gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "wizardMoved");
     }
 }
 
@@ -116,15 +115,18 @@ void Wizard_Take(CommandContext context, GameState* gameState, WorldData* worldD
     if (takeCnt < 2)
     {
         printf("\"Don't touch me!\"\n");
+        GameState_ChangeScore(gameState, 1);
     }
     if (takeCnt == 2)
     {
         printf("\"Stop it!\"\n");
+        GameState_ChangeScore(gameState, 2);
     }
     if (takeCnt == 3)
     {
         printf("He begins to run in circles\n");
         gameState->wizardReadyToCarry = true;
+        GameState_ChangeScore(gameState, 2);
     }
     if (takeCnt >= 4)
     {
