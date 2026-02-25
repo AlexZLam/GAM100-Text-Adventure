@@ -15,6 +15,7 @@ This file declares the functions of the small portal in room 5.
 #include "Item.h"
 #include "Room.h"
 #include "WorldData.h" /* WorldData_GetRoom */
+#include "WorldDataFactory.h" /*  Room4_Build_DeadWizard, Room4_Build_SavedWizard */
 
 typedef struct WorldData WorldData;
 bool portalBoom = false;
@@ -47,6 +48,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 	while (getchar() != '\n');
 	printf("You withdraw your hand. The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 	scanf_s("");
+	while (getchar() != '\n');
 	if (ans == 1)
 	{
 		printf("The tense silence dissapates.\n");
@@ -60,6 +62,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 		if (ItemList_FindItem(room4->itemList, "wizard") != NULL)
 		{
 			printf("You hear a shrill scream from outside the room. You've made the right choice to progress, but at what cost?\n");
+			WorldData_SetRoom(worldData, 4, Room4_Build_DeadWizard());
 		}
 		else
 		{
@@ -73,6 +76,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 			{
 				printf("The wizard runs in and chirps, \"That coulda gone badly if you hadn't moved me. Thanks, adventurer!\". Then he scuttles off. You made the right choice!\n");
 			}
+			WorldData_SetRoom(worldData, 4, Room4_Build_SavedWizard());
 			GameState_ChangeScore(gameState, 10);
 		}
 	}
