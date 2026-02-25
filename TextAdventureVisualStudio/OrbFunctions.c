@@ -35,7 +35,7 @@ void Orb_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		/* tell the user that something cool happens when they pick up the gold piece */
 		printf("Where should I put this?\n");
 		/* add to the user's score */
-		GameState_ChangeScore(gameState, 5);
+		GameState_ChangeScore(gameState, 10);
 		/* the gold piece has not been scored, so mark the flag */
 		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "orbScored");
 	}
