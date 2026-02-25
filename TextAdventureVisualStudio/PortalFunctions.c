@@ -15,6 +15,8 @@ This file declares the functions of the small portal in room 5.
 #include "Item.h"
 #include "Room.h"
 
+#include "WorldData.h" /* WorldData_GetRoom */
+
 typedef struct WorldData WorldData;
 
 
@@ -47,13 +49,24 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 	else if (ans == 2)
 	{
 		printf("Through the portal, you see a blast of fire and rubble. The portal closes. ");
-		if (!GameFlags_IsInList(gameState->gameFlags, "wizardMoved"))
+		Room* room4 = WorldData_GetRoom(worldData, 4);
+		//if the wizard hasn't been moved from room 4
+		if (ItemList_FindItem(room4->itemList, "wizard") != NULL)
 		{
 			printf("You hear a shrill scream from outside the room. You've made the right choice to progress, but at what cost?\n");
 		}
 		else
 		{
-			printf("From your backpack, the wizard chirps, \"That coulda gone badly if you hadn't grabbed me. Thanks, adventurer!\". You made the right choice!\n");
+			//if the wizard has been picked up
+			if (ItemList_FindItem(gameState->inventory, "wizard") != NULL)
+			{
+				printf("From your backpack, the wizard chirps, \"That coulda gone badly if you hadn't grabbed me. Thanks, adventurer!\". You made the right choice!\n");
+			}
+			//if the wizard has been picked dropped elsewhere
+			else
+			{
+				printf("The wizard runs in and chirps, \"That coulda gone badly if you hadn't moved me. Thanks, adventurer!\". Then he scuttles off. You made the right choice!\n");
+			}
 			GameState_ChangeScore(gameState, 10);
 		}
 	}
