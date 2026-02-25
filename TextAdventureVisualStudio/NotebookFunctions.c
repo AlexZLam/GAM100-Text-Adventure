@@ -74,7 +74,7 @@ void Notebook_Use(CommandContext context, GameState* gameState, WorldData* world
 		Room_SetDescription(room, "This is room 3. There is a gold piece on the floor.\n");
 
 	*roomItemsPtr = ItemList_Add(*roomItemsPtr, GoldPiece_Build());
-	printf("You see soemthing shiny fall out of the book\n");
+	printf("You see something shiny fall out of the book\n");
 	printf("The notebook says: \n");
 	printf("... plus the number of eyes cyclops has twice over.\n");
 	GameState_ChangeScore(gameState, 5);

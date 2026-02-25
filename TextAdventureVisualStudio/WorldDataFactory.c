@@ -107,7 +107,7 @@ Room* Room2_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 2. The room is isolated from the others, but you can see a crack in the west wall, just large enough to get through. There is a strange door to the east that has an egg shaped outline on it.There is also a strange circular door to the south.\n");
+	room = Room_Create("This is room 2. The room is isolated from the others, but you can see a crack in the west wall, just large enough to get through. There is a strange door to the east that has an egg shaped outline on it. There is also a strange circular door to the south.\n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "east", 3);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
@@ -223,7 +223,7 @@ Room* Room6_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
 	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
-	room = Room_Create("This is room 6. There is a pedestal with an egg looking inscription above it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
+	room = Room_Create("This is room 6. There is a pedestal with a gold piece on it and an egg looking inscription above it. There is rune carved into the base of the pedestal that looks like an explosion. \n");
 	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
 	Room_AddRoomExit(room, "west", 4);
 	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
