@@ -57,6 +57,28 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		{
 			GameState_EndGame(gameState, "Then, the room explodes.\n");
 		}
+
+		/* retrieve the current room */
+		Room* room = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
+
+		/* get the current room's item list */
+		ItemList** roomItemPtr = Room_GetItemList(room);
+
+		/* find the dropped item in the player's inventory */
+		Item* droppedItem = ItemList_FindItem(gameState->inventory, "egg");
+		if (droppedItem == NULL)
+		{
+			/* if the item wasn't found, then the player doesn't have it so they can't drop it */
+			printf("You do not have an egg.\n");
+			return;
+		}
+
+		/* remove the item from inventory and assign the inventory pointer back to the game state */
+		gameState->inventory = ItemList_Remove(gameState->inventory, droppedItem);
+
+		/* add the item to the room's item list */
+		*roomItemPtr = ItemList_Add(*roomItemPtr, droppedItem);
+
 		return;
 	}
 
