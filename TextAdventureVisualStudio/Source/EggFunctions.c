@@ -19,7 +19,6 @@ This file defines the functions to create a specific item, the "egg".
 #include "ItemList.h" /* ItemList_FindItem, ItemList_Add, ItemList_Remove */
 
 #include "RoomExit.h" // RoomExit_Free
-#include "WorldDataFactory.h" /*  Room4_Build_DeadWizard, Room4_Build_SavedWizard */
 
 
 typedef struct WorldData WorldData;
@@ -91,21 +90,6 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 		GameState_ChangeScore(gameState, 25);
 		/* the egg has not been scored, so mark the flag */
 		gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "eggScored");
-	}
-	// hand portal: take in room 5 to blow up room 6
-	if (gameState->currentRoomIndex == 5)
-	{
-		Room* room4 = WorldData_GetRoom(worldData, 4);
-		//blow up room 6: kill wizard if hes in room 4, take away room 4 east exit and update room 4 description
-		if (ItemList_FindItem(room4->itemList, "wizard") != NULL)
-		{
-			WorldData_SetRoom(worldData, 4, Room4_Build_DeadWizard());
-		}
-		else
-		{
-			WorldData_SetRoom(worldData, 4, Room4_Build_SavedWizard());
-		}
-
 	}
 }
 
