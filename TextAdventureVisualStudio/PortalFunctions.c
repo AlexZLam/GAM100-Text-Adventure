@@ -14,11 +14,10 @@ This file declares the functions of the small portal in room 5.
 #include "GameFlags.h"
 #include "Item.h"
 #include "Room.h"
-
 #include "WorldData.h" /* WorldData_GetRoom */
 
 typedef struct WorldData WorldData;
-
+bool portalBoom = false;
 
 void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldData)
 {
@@ -32,6 +31,11 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 		printf("You don't see a portal in this room.\n");
 		return;
 	}
+	if (portalBoom)
+	{
+		printf("This dissapeared remember?\n");
+		return;
+	}
 	printf("Looking through the portal, you see the egg on the pedestal in room 6. You reach in.\n");
 	//once the portal has been found, the player can go save the wizard
 	gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "portalUsed");
@@ -40,6 +44,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 	printf("What do you do? 1: Put the egg back. 2: Leave it as is.\n");
 	int ans = 0;
 	scanf_s("%d", &ans);
+	while (getchar() != '\n');
 	printf("You withdraw your hand. The whirring stops, and for a moment, everything is quiet. (Enter to continue)");
 	scanf_s("");
 	if (ans == 1)
@@ -48,6 +53,7 @@ void Portal_Use(CommandContext context, GameState* gameState, WorldData* worldDa
 	}
 	else if (ans == 2)
 	{
+		portalBoom = true;
 		printf("Through the portal, you see a blast of fire and rubble. The portal closes. ");
 		Room* room4 = WorldData_GetRoom(worldData, 4);
 		//if the wizard hasn't been moved from room 4
