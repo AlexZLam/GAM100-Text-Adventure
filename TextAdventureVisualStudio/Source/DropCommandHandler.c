@@ -50,8 +50,15 @@ void HandleDropCommand(CommandData *command, GameState* gameState, WorldData* wo
 		printf("You do not have a %s.\n", command->noun);
 		return;
 	}
+
 	//can't drop coin to farm score
-	
+	if (strcmp(command->noun, "gold piece") == 0)
+	{
+		printf("The gold piece is too valuable to drop.\n");
+		return;
+	}
+
+
 	/* remove the item from inventory and assign the inventory pointer back to the game state */
 	gameState->inventory = ItemList_Remove(gameState->inventory, droppedItem);
 
