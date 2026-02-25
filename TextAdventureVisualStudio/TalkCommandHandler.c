@@ -5,7 +5,7 @@ DP email    diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
-This file defines functions that handle the "take" user command, which removes
+This file defines functions that handle the "talk" user command, which removes
 an item from the current room and adds it to the user's inventory.
 
 ******************************************************************************/

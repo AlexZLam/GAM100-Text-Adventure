@@ -1,12 +1,13 @@
 /******************************************************************************
 filename    GoCommandHandler.c
-author      Matthew Picioccio
-DP email    mattpic@digipen.edu
+author      Matthew Picioccio, Diana Everman
+DP email    mattpic@digipen.edu, diana.everman@digipen.edu
 course      GAM100 ** Do not use this code in your team project
 
 Brief Description:
 This file defines functions that handle the "go" user command, which moves
-the user from one room to another using defined exits.
+the user from one room to another using defined exits. Edited to add some conditional
+exits.
 
 ******************************************************************************/
 #include "stdafx.h" /* NULL, printf */
@@ -32,7 +33,6 @@ void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worl
 	}
 
 	//built-in shortcuts for cardinal directions
-	
 	if (strcmp(command->noun,"n") == 0)
 	{
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "north");
@@ -50,7 +50,6 @@ void HandleGoCommand(CommandData* command, GameState* gameState, WorldData* worl
 		strcpy_s(command->noun, MAX_COMMAND_NOUN_LENGTH, "west");
 	}
 	
-
 	/* get the current room, based on the user state */
 	currentRoom = WorldData_GetRoom(worldData, gameState->currentRoomIndex);
 
