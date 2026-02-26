@@ -15,6 +15,7 @@ This could be used to create default states as well as loaded state.
 #include "WorldData.h" /* WorldData_Create, WorldData_SetRoom */
 #include "Room.h" /* Room_Create, Room_AddRoomExit, Room_GetItemList */
 #include "ItemList.h" /* ItemList_Add */
+#include "Item.h" /* Item_Create */
 #include "BrickFunctions.h" /* Brick_Build */
 #include "GoldPieceFunctions.h" /* GoldPiece_Build */
 #include "ExitDoorFunctions.h" /* ExitDoor_Build */
@@ -94,6 +95,7 @@ Room* Room1_Build()
 	Room_AddRoomExitShortcut(room, "s", 0);
 	/* TODO REQUIRED: Add a brick to the list of items in the room */
 	ItemList_AddItem(Room_GetItemList(room), Brick_Build());
+	ItemList_AddItem(Room_GetItemList(room), Item_Create("mirror", "The large mirror shimmers magically.", false, NULL, NULL, NULL));
 	/* return the new room */
 	return room;
 }
@@ -125,19 +127,17 @@ Room* Room2_Build()
 //Room 3
 Room* Room3_Build()
 {
-	/* TODO: Pre-declare a room pointer which we will use to build the new room */
+	/* Pre-declare a room pointer which we will use to build the new room */
 	Room* room = NULL;
 
-	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
-	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	/* Create the room and include an initial room description */
 	room = Room_Create("This is room 3.  There is skeleton in the corner of the room. He looks very tired. He also has a notebook. there is a door north\n");
-	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	/* Exits */
 	Room_AddRoomExit(room, "north", 4);
-	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
 	Room_AddRoomExitShortcut(room, "n", 4);
 	Room_AddRoomExit(room, "west", 2);
 	Room_AddRoomExitShortcut(room, "w", 2);
-	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	/* Items */
 	ItemList_AddItem(Room_GetItemList(room), Notebook_Build());
 	ItemList_AddItem(Room_GetItemList(room), Skeleton_Build());
 	/* return the new room */
@@ -149,16 +149,14 @@ Room* Room4_Build()
 	/* TODO: Pre-declare a room pointer which we will use to build the new room */
 	Room* room = NULL;
 
-	/* TODO REQUIRED: Call Room_Create with the Room 2 description:
-	"This is room 2.  The room is isolated from the others, but you can see a crack in the east wall, just large enough to get through.\n" */
+	/* Create the room and include an initial room description */
 	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him.\n");
-	/* TODO REQUIRED: Add an Exit "east" to Room 0 */
+	/* Exits */
 	Room_AddRoomExit(room, "east", 6);
-	/* TODO BASIC: Add exit shortcuts for "e" and "crack" */
 	Room_AddRoomExitShortcut(room, "e", 6);
 	Room_AddRoomExit(room, "south", 3);
 	Room_AddRoomExitShortcut(room, "s", 3);
-	/* TODO REQUIRED: Add a gold piece to the list of items in the room */
+	/* Items */
 	ItemList_AddItem(Room_GetItemList(room), Wizard_Build());
 	/* return the new room */
 	return room;
