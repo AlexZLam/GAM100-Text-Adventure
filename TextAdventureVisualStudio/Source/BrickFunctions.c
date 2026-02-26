@@ -54,7 +54,7 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 	}
 
 	/* check if we're in the right room to use the item */
-	if (gameState->currentRoomIndex != 0 && gameState->currentRoomIndex != 6)
+	if (gameState->currentRoomIndex != 0 && gameState->currentRoomIndex != 1 && gameState->currentRoomIndex != 6)
 	{
 		/* we are not in the right room - inform the user of the problem and take no action */
 		printf("You cannot use the brick here.\n");
@@ -104,6 +104,12 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 			/* the gold piece has not been scored, so mark the flag */
 			gameState->gameFlags = GameFlags_Add(gameState->gameFlags, "cageBrokenScored");
 		}
+	}
+	else if (gameState->currentRoomIndex == 1)
+	{
+		/* don't break the mirror!  if you do, you can't finish the game */
+		GameState_EndGame(gameState, "You throw the brick at the mirror. It shatters, and you know that you can never leave...\n");
+		return;
 	}
 	else if (gameState->currentRoomIndex == 6)
 	{
