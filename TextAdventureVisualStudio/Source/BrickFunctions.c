@@ -107,9 +107,20 @@ void Brick_Use(CommandContext context, GameState* gameState, WorldData* worldDat
 	}
 	else if (gameState->currentRoomIndex == 1)
 	{
-		/* don't break the mirror!  if you do, you can't finish the game */
-		GameState_EndGame(gameState, "You throw the brick at the mirror. It shatters, and you know that you can never leave...\n");
+		printf("Who are you? \n1: Frankie. 2: Not Frankie.\n");
+		int ans = 0;
+		scanf_s("%d", &ans);
+		if (ans == 1)
+		{
+			/* don't break the mirror!  if you do, you can't finish the game */
+			GameState_EndGame(gameState, "You throw the brick at the mirror. It shatters, and you know that you can never leave...\n");
+		}
+		else if (ans == 2)
+		{
+			printf("You choose not to break the mirror, and know you made the right choice.");
+		}
 		return;
+		
 	}
 	else if (gameState->currentRoomIndex == 6)
 	{
