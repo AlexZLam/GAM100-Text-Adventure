@@ -67,6 +67,7 @@ Room* Room0_Build()
 	Room_AddRoomExitShortcut(room, "n", 1);
 	/* TODO REQUIRED: add an exit door to the list of items in the room, ExitDoor_Build() */
 	ItemList_AddItem(Room_GetItemList(room), ExitDoor_Build());
+	ItemList_AddItem(Room_GetItemList(room), Item_Create("cage", "The cage looks breakable by a brick.", false, NULL, NULL, NULL));
 	/* TODO ADVANCED: (not required) update the description and add a room exit to the "east" */
 
 	/* return the new room */
