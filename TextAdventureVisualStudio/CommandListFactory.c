@@ -77,7 +77,7 @@ CommandList* CreateCommandList()
 
 	//teleport command
 	CommandList_Add(cmdListPtr, "", HandleTPCommand, true);
-	CommandList_Add(cmdListPtr, "tp", HandleTPCommand, false);
+	CommandList_Add(cmdListPtr, "tptp", HandleTPCommand, false);
 	/* TODO ADVANCED: create aditional commands
 	this should require the creation of additional .c files to implement the command functions */
 
