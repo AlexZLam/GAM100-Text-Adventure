@@ -1,2 +1,3 @@
-﻿  CommandListFactory.c
-  GAM100Project.vcxproj -> C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Debug\GAM100Project.exe
+﻿  EggFunctions.c
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\EggFunctions.c(39,8): error C2220: the following warning is treated as an error
+C:\Users\alexander.lam\Documents\GitHub\GAM100-Text-Adventure\TextAdventureVisualStudio\Source\EggFunctions.c(39,8): warning C4189: 'egg': local variable is initialized but not referenced
