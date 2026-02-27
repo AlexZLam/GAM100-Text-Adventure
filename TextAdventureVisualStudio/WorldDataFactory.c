@@ -36,7 +36,7 @@ Room* RoomN_Build()
 
 	/* Create the room
 	   include an initial room description */
-	room = Room_Create("DEBUG: This is a template - Include a description for the room here\n");
+	//room = Room_Create("DEBUG: This is a template - Include a description for the room here\n");
 
 	/* Exits
 	   add one or more exits to allow navigation between rooms */

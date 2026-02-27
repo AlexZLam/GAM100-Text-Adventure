@@ -59,7 +59,7 @@ GameFlags* GameFlags_Add(GameFlags* gameFlags, const char* flag)
 
 #ifdef _DEBUG
 	/* In debug mode, print output that the user has set a flag */
-	printf("\nDEBUG: adding game flag: %s\n", flag);
+	//printf("\nDEBUG: adding game flag: %s\n", flag);
 #endif
 
 	/* return the new object as the new head of the list */
