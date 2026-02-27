@@ -32,7 +32,7 @@ This could be used to create default states as well as loaded state.
 Room* RoomN_Build()
 {
 	/* Pre-declare a room pointer which we will use to build the new room */
-	Room* room;
+	Room* room =NULL;
 
 	/* Create the room
 	   include an initial room description */
