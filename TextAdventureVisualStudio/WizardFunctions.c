@@ -18,6 +18,8 @@ This file defines the wizard interface, which is an npc in the game
 #include "WorldData.h"
 #include "OrbFunctions.h"
 #include "KeyFunctions.h"
+#include "GoldPieceFunctions.h"
+
 
 int takeCnt = 0;
 
@@ -42,7 +44,7 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
 
     if (ans == 1)
     {
-        printf("I am the count of crowns worn by the hydra after three of its heads are cut away...\n");
+        printf("I am the count of heads of the an 5 headed hydra after three of its heads are cut away...\n");
         printf("The wizard stutters and says he forgot the rest.\n");
 
         printf("\nAnswer?: ");
@@ -72,29 +74,38 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
     else if (ans == 2)
     {
         int goldRemoved = 0;
+
+        // Try to remove 3 gold pieces, one at a time
         for (int i = 0; i < 3; i++)
         {
             Item* gold = ItemList_FindItem(gameState->inventory, "gold piece");
             if (gold == NULL)
             {
-                break;
+                break; // No more gold found
             }
+
             gameState->inventory = ItemList_Remove(gameState->inventory, gold);
             goldRemoved++;
         }
 
         if (goldRemoved == 3)
         {
-
             gameState->inventory = ItemList_Add(gameState->inventory, orb);
             printf("You pay 3 gold and receive the orb.\n");
         }
         else
         {
-            // Return removed gold if not enough? Optional
+            // If not enough gold, return any removed gold
+            for (int i = 0; i < goldRemoved; i++)
+            {
+                Item* gold = GoldPiece_Build(); // or however you create gold items
+                gameState->inventory = ItemList_Add(gameState->inventory, gold);
+            }
+
             printf("You don't have enough gold.\n");
         }
     }
+
     else if (ans == 3 && GameFlags_IsInList(gameState->gameFlags, "portalUsed"))
     {
         gameState->wizardReadyToCarry = true;
