@@ -44,7 +44,7 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
 
     if (ans == 1)
     {
-        printf("I am the count of heads of the an 5 headed hydra after three of its heads are cut away...\n");
+        printf("I am the count of heads of a 5 headed hydra after three of its heads are cut away...\n");
         printf("The wizard stutters and says he forgot the rest.\n");
 
         printf("\nAnswer?: ");
@@ -56,6 +56,9 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
             printf("The wizard grins, impressed. \"Correct!\"\n");
             printf("He hands you the key\n");
             gameState->inventory = ItemList_Add(gameState->inventory, key);
+            //Update room description
+            Room* room4 = WorldData_GetRoom(worldData, 4);
+            Room_SetDescription(room4, "This is room 4. There is small wizard standing on an apple crate to look over the table of his pop up shop. His cloak is much too big for him.\n");
         }
         else if (ridAns == 4)
         {
@@ -112,6 +115,9 @@ void Wizard_Talk(CommandContext context, GameState* gameState, WorldData* worldD
         printf("\"I'M GONNA EXPLODE?!!?!\"\n");
         printf("The wizard jumps off the apple crate he was standing on and runs towards the exit.\nHe then runs into the door frame and is knocked out.\n");
         printf("His little body looks so easy carry.\n");
+        //Update room description
+        Room* room4 = WorldData_GetRoom(worldData, 4);
+        Room_SetDescription(room4, "This is room 4. There is an apple crate behind the table of the wizard's pop up shop.\n");
     }
 }
 
@@ -143,6 +149,9 @@ void Wizard_Take(CommandContext context, GameState* gameState, WorldData* worldD
     {
         printf("You catch him and tie him to your back\n");
         GameState_ChangeScore(gameState, 5);
+        //Update room description
+        Room* room4 = WorldData_GetRoom(worldData, 4);
+        Room_SetDescription(room4, "This is room 4. There is an apple crate behind the table of the wizard's pop up shop.\n");
     }
 }
 
