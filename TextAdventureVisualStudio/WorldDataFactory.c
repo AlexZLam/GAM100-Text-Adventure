@@ -59,7 +59,7 @@ Room* Room0_Build()
 
 	/* TODO REQUIRED: Call Room_Create with the Room 1 description:
 	"This is room 0. It is a display room with a cage in the middle. You can see a jeweled egg inside the cage.  There is a crack in the west wall, but you can't fit through it from this side.\n" */
-	room = Room_Create("This is room 0. It is a display room with a cage in the middle. You can see a jeweled egg inside the cage.  There is a crack in the west wall, but you can't fit through it from this side.\n");
+	room = Room_Create("This is room 0. It is a display room with an easily breakable cage in the middle covered in spikes. You can see a jeweled egg inside the cage. There is a crack in the west wall, but you can't fit through it from this side.\n");
 	
 	/* TODO REQUIRED: Add an Exit "north" to Room 1 */
 	Room_AddRoomExit(room, "north", 1);
@@ -151,7 +151,7 @@ Room* Room4_Build()
 	Room* room = NULL;
 
 	/* Create the room and include an initial room description */
-	room = Room_Create("This is room 4. There is small wizard stand on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him.\n");
+	room = Room_Create("This is room 4. There is small wizard standing on an apple crate to look over the table of his pop up shop. There is a small key glimmering in the pocket of the cloak that is much too big for him.There is also a door to the east with a key hole\n");
 	/* Exits */
 	Room_AddRoomExit(room, "east", 6);
 	Room_AddRoomExitShortcut(room, "e", 6);

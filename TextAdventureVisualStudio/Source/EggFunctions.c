@@ -36,7 +36,7 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 	{
 		return; /* take no action if the parameters are invalid */
 	}
-
+	//Item* egg = Egg_Build();
 	if (gameState->currentRoomIndex == 6)
 	{
 		// indiana jones
@@ -86,6 +86,7 @@ void Egg_Take(CommandContext context, GameState* gameState, WorldData* worldData
 	{
 		/* tell the user that something cool happens when they pick up the egg */
 		printf("The fragile egg shines in the dim light as you put it in your pocket.\n");
+		//gameState->inventory = ItemList_Add(gameState->inventory, egg);
 		/* add to the user's score */
 		GameState_ChangeScore(gameState, 25);
 		/* the egg has not been scored, so mark the flag */
