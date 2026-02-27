@@ -76,7 +76,8 @@ CommandList* CreateCommandList()
 	CommandList_Add(cmdListPtr, "tk", HandleTalkCommand, false);
 
 	//teleport command
-	
+	CommandList_Add(cmdListPtr, "tele", HandleTPCommand, true);
+	CommandList_Add(cmdListPtr, "tp", HandleTPCommand, false);
 	/* TODO ADVANCED: create aditional commands
 	this should require the creation of additional .c files to implement the command functions */
 
